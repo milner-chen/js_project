@@ -1,0 +1,10 @@
+//styles will not be held here, but in individual files
+
+// could just make + include a variables file: colors, padding
+
+// import other styles files
+@import "./styles/example.scss";
+
+#main {
+    color: $color;
+}
