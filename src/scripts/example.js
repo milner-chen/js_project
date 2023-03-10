@@ -1,3 +1,4 @@
+/*
 class Example {
     constructor(ele) {
         this.ele = ele // this lost context; need bind
@@ -13,3 +14,4 @@ class Example {
 }
 
 export default Example;
+*/

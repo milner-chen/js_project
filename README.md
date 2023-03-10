@@ -30,8 +30,8 @@ npm
 ## Monday:
 
 - Implement the game logic
-- Make sure that the character can interact with items (collision )
-- Make sure that stats. (points, lives, ect) update properly
+- Make sure that the character can interact with items (collision)
+- Make sure that stats. (points, lives, etc) update properly
 
 ## Tuesday:
 
