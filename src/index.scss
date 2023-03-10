@@ -3,6 +3,7 @@
 // could just make + include a variables file: colors, padding
 
 // import other styles files
+@import "./styles/reset.scss";
 @import "./styles/example.scss";
 
 #main {
