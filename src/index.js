@@ -1,5 +1,8 @@
 console.log("webpack is fine");
 
+import Border from "./scripts/border";
+window.Border = Border;
+
 import Platform from "./scripts/platform";
 window.Platform = Platform;
 

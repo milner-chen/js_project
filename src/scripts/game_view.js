@@ -58,7 +58,7 @@ class GameView {
 
     animate() {
         const player = this.game.player;
-        const plats = this.game.platforms;
+        const objects = this.game.allObjects;
         // const 
         this.game.moveObjects();
         this.game.draw(this.ctx);
@@ -66,12 +66,13 @@ class GameView {
 
         // check if player is above the platform (collision detection)
         // should probably make this it's own function tbh
-        plats.forEach(plat => {
-            if (player.pos[1] + player.dims <= plat.pos[1]
-                && player.pos[1] + player.dims + player.yVelocity >= plat.pos[1]
-                && player.pos[0] + (player.dims / 2) >= plat.pos[0]
-                && player.pos[0] + (player.dims / 2) <= plat.pos[0] + plat.width) {
+        objects.forEach(obj => {
+            if (player.pos[1] + player.ydim <= obj.pos[1] - (obj.height / 2)
+                && player.pos[1] + player.ydim + player.yVelocity >= obj.pos[1] - (obj.height / 2)
+                && player.pos[0] + player.xdim >= obj.pos[0]
+                && player.pos[0] + (player.xdim / 2) <= obj.pos[0] + obj.width) {
                 player.yVelocity = 0;
+                player.xVelocity = 0;
             }
         })
     }
