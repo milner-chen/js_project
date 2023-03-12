@@ -1,5 +1,8 @@
 console.log("webpack is fine");
 
+import Platform from "./scripts/platform";
+window.Platform = Platform;
+
 import Player from "./scripts/player";
 window.Player = Player;
 
@@ -37,8 +40,10 @@ REMINDER:
     GET OTHER STUFF DONE FIRSTTT!!!
 
 Some immediate to-do's
-    - do some key-binding
-    - i think this goes hand in hand with character movement
+    - add some out of bounds check
+        - created for bottom
+    - do jumping animation
+        - still need to fix the fact that you can jump many times
 
 A little less immediate to-do's
 
