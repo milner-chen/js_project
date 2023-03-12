@@ -96,8 +96,8 @@ class Game {
             let obj = this.items[i];
             obj.draw(ctx);
             let border = new Border(obj);
+            border.draw(ctx);
             if (this.hasCollison(this.player, obj)) {
-                border.draw(ctx);
                 // debugger;
                 if (obj instanceof Item) {
                     this.found.push(this.items.splice(i, 1));

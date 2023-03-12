@@ -58,7 +58,7 @@ class GameView {
 
     animate() {
         const player = this.game.player;
-        const objects = this.game.allObjects;
+        const objects = this.game.platforms;
         // const 
         this.game.moveObjects();
         this.game.draw(this.ctx);
