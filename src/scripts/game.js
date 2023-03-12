@@ -1,6 +1,7 @@
 console.log("webpack is doing well, from game")
 import Player from "./player";
 import Platform from "./platform";
+import Item from "./item";
 
 // this is where we will load other elements of the game
 // this will also hold the game logic
@@ -30,6 +31,11 @@ class Game {
         // should have items -> arr
         this.createPlatforms();
         console.log(this.platforms);
+
+        this.items = [
+            new Item("fish", [400, 400]),
+        ];
+        console.log(this.items);
     }
 
     createPlatforms() {
@@ -44,7 +50,7 @@ class Game {
                 new Platform([x, y], width, 20)
             );
         }
-    }
+    }    
 
     draw(ctx) {
         // debugger;
@@ -54,13 +60,16 @@ class Game {
         // this.player.move([1, 1]);
         // console.log(this.player.pos);
         // console.log(this);
-
+        
         // drawing that one singular platform for now
         // debugger;
         this.platforms.forEach(plat => plat.draw(ctx));
-
+        this.items.forEach(item => item.draw(ctx));
         // note that this (0, 0) is actually the dimensions of the sprite
         this.player.draw(ctx, 0, 0);
+
+        // ctx.font = "30px serif";
+        // ctx.fillText("current score", 400, 50);
     }
 
     moveObjects() {
