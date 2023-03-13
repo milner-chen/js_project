@@ -20,15 +20,18 @@ class TaskList {
     }
 
     isNextItem(item) {
-        return item.type === this.allItems.type;
+        return item.type === this.allItems[0].type;
     }
 
     drawList(ctx) {
-        ctx.strokeStyle = "#a9c4f5";
-        ctx.fillStyle = "#7ba5f0";
+        // ctx.strokeStyle = "#a9c4f5";
+        // ctx.fillStyle = "#7ba5f0";
+        ctx.strokeStyle = "coral";
+        ctx.fillStyle = 
         // ctx.lineWidth = 10;
         ctx.beginPath();
-        ctx.roundRect(this.pos[0], this.pos[1], 20 * (this.list.length), this.height, 5);
+        // could have a minimum width + expand from there..
+        ctx.roundRect(this.pos[0], this.pos[1], 35 * (this.list.length), this.height, 5);
         ctx.stroke();
         ctx.fill();
     }
@@ -36,7 +39,7 @@ class TaskList {
     drawContents(ctx, list) {
         ctx.font = "20px Cute Font";
         ctx.fillStyle = "black";
-        for (let i = 0; i < list.length / 2; i++) {
+        for (let i = 0; i < list.length; i++) {
             let task = list[i];
             // ctx.fillText(task.type, 50, 50 + (i * 15));
             // console.log(task.type);

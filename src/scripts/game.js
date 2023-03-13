@@ -76,9 +76,9 @@ class Game {
     drawText(ctx) {
         ctx.font = "40px Cute Font";
         ctx.textAlign = "center";
-        ctx.fillStyle = "beige";
+        // ctx.fillStyle = "beige";
         ctx.fillText("Score: " + this.score, 499.5, 50.5);
-        ctx.fillStyle = "coral";
+        ctx.fillStyle = "#FF7F50";
         ctx.fillText("Score: " + this.score, 500, 50);
     }
 
@@ -100,15 +100,15 @@ class Game {
         for (let i = 0; i < this.items.length; i++) {
             let obj = this.items[i];
             obj.draw(ctx);
-            let border = new Border(obj);
-            border.draw(ctx);
+            // let border = new Border(obj);
+            // border.draw(ctx);
             if (this.hasCollison(this.player, obj)) {
                 // debugger;
-                if (obj instanceof Item) {
-                    this.found.push(this.items.splice(i, 1));
-                    console.log(this.items);
+                if (this.tasklist.isNextItem(obj)) {
+                    // this.found.push(this.items.splice(i, 1));
+                    this.found.push(this.items.shift());
                     console.log(this.tasklist.found); // could draw a line throught the ones already found
-                }
+                } else console.log(this.items);
             }
         }
         
