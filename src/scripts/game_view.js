@@ -16,6 +16,7 @@ class GameView {
     constructor(game, ctx) {
         this.game = game;
         this.ctx = ctx;
+        this.startTime = 60;
     }
     
     // bindKeys() {
@@ -62,6 +63,10 @@ class GameView {
         // const 
         this.game.moveObjects();
         this.game.draw(this.ctx);
+        
+        // this.ctx.fillText(`${Math.floor(this.startTime/60)}:${this.startTime % 60}`, 500, 300);
+        // this.startTime -= 1/60;
+        
         requestAnimationFrame(this.animate.bind(this));
 
         // check if player is above the platform (collision detection)
@@ -75,6 +80,10 @@ class GameView {
                 player.xVelocity = 0;
             }
         })
+
+        // game over: reload page;
+        // if (this.game.lives.length === 0) document.location.reload();
+        // clearInterval(setInterval(draw, 10));
     }
 
     start() {

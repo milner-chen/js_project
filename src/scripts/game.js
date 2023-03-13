@@ -112,24 +112,48 @@ class Game {
         for (let i = 0; i < this.items.length; i++) {
             let obj = this.items[i];
             obj.draw(ctx);
-            // let border = new Border(obj);
-            // border.draw(ctx);
+            let border = new Border(obj);
+            border.draw(ctx);
             if (this.hasCollison(this.player, obj)) {
                 // debugger;
+                // let collision = false;
+
                 if (this.tasklist.isNextItem(obj)) {
+                    // collsion = true;
                     // this.found.push(this.items.splice(i, 1));
                     this.found.push(this.items.shift());
                     this.score += 100;
-                    console.log(this.tasklist.found); // could draw a line throught the ones already found
+                    // console.log(this.tasklist.found); // could draw a line throught the ones already found
                 } else {
+                    if (!obj.collision) {
+                        this.lives.pop();
+
+                        obj.collision = true;
+                        setTimeout(() => {
+                            console.log("testing timeout");
+                            obj.collision = false;
+                        }, 500);
+                            console.log(obj.collision);
+                    }
+                        // if (obj.count === 0) { obj.count = 19; }
                     // debugger;
                     // handle what to do if collision
-                    // this.player.xVelocity = -1;
-                    // this.player.pos[1] = ;
-                    this.lives.pop();
-                    console.log(this.items);
+
+                    // just shove the player away...
+                    // this.player.pos[0] += obj.width;
+                    // this.player.xVelocity *= 0.5;
+                    // this.player.pos[1] += obj.height;
+                    // this.player.yVelocity *= 0.5;
+
+                    // this.player.pos[0] > (obj.pos[0] / 2) ? this.player.pos[0] += obj.width : this.player.pos[0] -= obj.width;
+                    // this.player.pos[1] > (obj.pos[1] / 2) ? this.player.pos[1] += obj.height : this.player.pos[1] -= obj.height;
+
+                    // this.lives.pop();
+                    // console.log(this.items);
                 }
             }
+            obj.count -= 1;
+            if (obj.count === 0) obj.count = 19;
         }
         
         this.player.draw(ctx, 5, 5);
@@ -151,11 +175,12 @@ class Game {
     }
 
     // for items
+    // not enough clarity about the type of collision for later
     hasCollison(rect1, rect2) {
-        if (!(rect1.pos[0] > rect2.pos[0] + rect2.width || // x start of 1 after end of 2
-            rect1.pos[0] + rect1.width < rect2.pos[0] || // x end of 1 before start of 2
-            rect1.pos[1] > rect2.pos[1] + rect2.height || // y top of 1 below bottom of 2
-            rect1.pos[1] + rect1.height < rect2.pos[1] // y bottom of 1 above top of 2
+        if (!(rect1.pos[0] > rect2.pos[0] + (rect2.width) || // x start of 1 after end of 2
+            rect1.pos[0] + (rect1.width) < rect2.pos[0] || // x end of 1 before start of 2
+            rect1.pos[1] > rect2.pos[1] + (rect2.height) || // y top of 1 below bottom of 2
+            rect1.pos[1] + (rect2.height) < rect2.pos[1] // y bottom of 1 above top of 2
         )) { // collision found
             return true;
         } else { // collision not found
