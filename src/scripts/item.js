@@ -19,21 +19,27 @@ class Item {
             case "jam":
                 this.img.src = "src/assets/61_jam.png";
                 break;
+            case "dumplings":
+                this.img.src = "src/assets/36_dumplings.png";
+                break;
+            case "egg":
+                this.img.src = "src/assets/38_friedegg.png";
+                break;
+            case "jelly":
+                this.img.src = "src/assets/59_jelly.png";
+                break;
+            case "pancakes":
+                this.img.src = "src/assets/79_pancakes.png";
+                break;
+            case "strawberrycake":
+                this.img.src = "src/assets/90_strawberrycake.png";
+                break;
         }
     }
 
-    // createFish() {
-    //     // this.width = 15;
-    //     // this.height = 10;
-    //     // this.color = "coral";
-    // }
-    
-    // createBread() {
-
-    // }
-
-    draw(ctx) {
-        ctx.drawImage(this.img, ...this.pos, this.width, this.height);
+    draw(ctx, pos) {
+        pos ||= this.pos;
+        ctx.drawImage(this.img, ...pos, this.width, this.height);
         // ctx.fillStyle = this.color;
         // ctx.strokeStyle = "white";
         // ctx.lineWidth = 3;
