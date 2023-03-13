@@ -3,6 +3,7 @@ import Player from "./player";
 import Platform from "./platform";
 import Item from "./item";
 import Border from "./border";
+import TaskList from "./task_list";
 
 // this is where we will load other elements of the game
 // this will also hold the game logic
@@ -38,13 +39,20 @@ class Game {
         // console.log(this.platforms);
 
         this.found = [];
-        this.list = ["jam", "bread"];
-
+        // this.list = ["jam", "bread"];
+        
         this.items = [
             new Item("bread", [170, 405 - 25]),
             new Item("jam", [854, 355 - 25]),
+            new Item("dumplings", [400, 400]),
+            new Item("egg", [900, 300]),
+            new Item("jelly", [600, 340]),
+            new Item("pancakes", [500, 150]),
+            new Item("strawberrycake", [700, 500]),
         ];
         
+        this.tasklist = new TaskList(this.items);
+
         this.allObjects = this.platforms.concat(this.items);
         console.log(this.allObjects);
 
@@ -79,18 +87,15 @@ class Game {
         ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
         ctx.drawImage(Game.BG, 0, 0, Game.DIM_X, Game.DIM_Y);
         this.drawText(ctx);
-        // this.player.move([1, 1]);
         // console.log(this.player.pos);
-        // console.log(this);
-
-        // this.platforms.forEach(plat => plat.draw(ctx));
+        this.tasklist.draw(ctx);
         // this.items.forEach(item => item.draw(ctx));
 
         // note that this (0, 0) is actually the dimensions of the sprite
         this.platforms.forEach(obj => {
             obj.draw(ctx);
-            let border = new Border(obj);
-            border.draw(ctx);
+            // let border = new Border(obj);
+            // border.draw(ctx);
         })
         for (let i = 0; i < this.items.length; i++) {
             let obj = this.items[i];
@@ -102,7 +107,7 @@ class Game {
                 if (obj instanceof Item) {
                     this.found.push(this.items.splice(i, 1));
                     console.log(this.items);
-                    console.log(this.found); // could draw a line throught the ones already found
+                    console.log(this.tasklist.found); // could draw a line throught the ones already found
                 }
             }
         }
@@ -133,6 +138,7 @@ class Game {
     //     else if (object.pos[1] + object.height + object.yVelocity > Game.DIM_Y) { object.yVelocity = 0; }
     // }
 
+    // for items
     hasCollison(rect1, rect2) {
         if (!(rect1.pos[0] > rect2.pos[0] + rect2.width || // x start of 1 after end of 2
             rect1.pos[0] + rect1.width < rect2.pos[0] || // x end of 1 before start of 2

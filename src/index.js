@@ -43,9 +43,6 @@ REMINDER:
     GET OTHER STUFF DONE FIRSTTT!!!
 
 Some immediate to-do's
-    - create the map you want -> platforms + items
-    - do collision detection for all objects -> important
-        - concat the items + platforms array
     - some game logic
         - generate the 'to-do list'
         - create something in game class to track what has been collected
