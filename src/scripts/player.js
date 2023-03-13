@@ -19,7 +19,7 @@ class Player {
         this.xVelocity = 0;
         this.yVelocity = 0;
         this.jumping = false;
-        this.friction = 0.6;
+        this.friction = 0.8;
         this.gravity = 0.5;
         this.up = false;
         this.left = false;
@@ -77,9 +77,9 @@ class Player {
     move() {
 
         if (this.right) {
-            this.xVelocity = 5;
+            this.xVelocity = 3;
         } else if (this.left) {
-            this.xVelocity = -5;
+            this.xVelocity = -3;
         } else this.xVelocity = 0;
 
         this.xVelocity *= this.friction;

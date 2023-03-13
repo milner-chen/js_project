@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.height = Game.DIM_Y;
     canvas.style.border = "2px solid coral";
     const ctx = canvas.getContext("2d");
+    ctx.imageSmoothingEnabled = false;
     window.ctx = ctx;
 
     const game = new Game();
@@ -44,32 +45,23 @@ REMINDER:
 
 Some immediate to-do's
     - some game logic
-        - generate the 'to-do list'
-        - create something in game class to track what has been collected
-            - maybe in a queue-like fashion
-            - might have to move this out of game...
+        - add lives -> where should i put this logic? fr...
+        - timer?
+    
 
 A little less immediate to-do's
 
-    Platform/Static Object
-    - you can hardcode the positions + they don't move
-    - probably the same for the collectable items
+    The entire map is hardcoded at the moment
+        - idk how you are going to expand this...
+        - more levels?
 
-    General to be fixed stuff
-    - add some out of bounds check
-        - created for bottom
-    - do jumping animation
-        - still need to fix the fact that you can jump many times
-
-    Collision Detection
-    - this is happening in the game class
-    - get all the objects
-    - check their positions
+    General to be fixed stuff:
+    - task list moves
+        - console log the pos, width, and length
+    - remove the border on the platforms
 
 More far off, but important stuff that you cannot for get:
     - user instructions
-    - basic stuff like title + such
-    - rendering score
     - game over screen
     - music??
     all rather scattered + far off stuff

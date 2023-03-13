@@ -7,7 +7,9 @@ class Platform {
     }
 
     draw(ctx) {
-        ctx.strokeStyle = "white";
+        // ctx.strokeStyle = "white";
+        ctx.strokeStyle = "coral";
+
         // ctx.fillStyle = "cadetblue";
         ctx.fillStyle = "#993300";
         ctx.lineWidth = 2;

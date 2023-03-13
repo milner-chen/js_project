@@ -4,6 +4,7 @@ import Platform from "./platform";
 import Item from "./item";
 import Border from "./border";
 import TaskList from "./task_list";
+import Life from "./life";
 
 // this is where we will load other elements of the game
 // this will also hold the game logic
@@ -53,10 +54,16 @@ class Game {
         
         this.tasklist = new TaskList(this.items);
 
-        this.allObjects = this.platforms.concat(this.items);
-        console.log(this.allObjects);
+        // this.allObjects = this.platforms.concat(this.items);
+        // console.log(this.allObjects);
 
         this.score = 0;
+
+        this.lives = [
+            new Life(),
+            new Life(),
+            new Life()
+        ];
     }
 
     // createPlatforms() {
@@ -89,6 +96,11 @@ class Game {
         this.drawText(ctx);
         // console.log(this.player.pos);
         this.tasklist.draw(ctx);
+        
+        for (let i = 0; i < this.lives.length; i++) {//
+            let life = this.lives[i];
+            life.draw(ctx, Game.DIM_X - 100 - (i * 35), 30);
+        }
         // this.items.forEach(item => item.draw(ctx));
 
         // note that this (0, 0) is actually the dimensions of the sprite
@@ -109,7 +121,14 @@ class Game {
                     this.found.push(this.items.shift());
                     this.score += 100;
                     console.log(this.tasklist.found); // could draw a line throught the ones already found
-                } else console.log(this.items);
+                } else {
+                    // debugger;
+                    // handle what to do if collision
+                    // this.player.xVelocity = -1;
+                    // this.player.pos[1] = ;
+                    this.lives.pop();
+                    console.log(this.items);
+                }
             }
         }
         
@@ -131,14 +150,6 @@ class Game {
         // this.collideObjects(this.player);
     }
 
-    // currently not in use
-    // collideObjects(object) {
-    //     if (object.pos[0] < 0) { object.pos[0] = 0; object.xVelocity = 0; }
-    //     else if (object.pos[0] + object.width > Game.DIM_X) { object.pos[0] = Game.DIM_X - object.width; object.xVelocity = 0;}
-    //     if (object.pos[1] < 0) { object.pos[1] = 0; object.xVelocity = 0; }
-    //     else if (object.pos[1] + object.height + object.yVelocity > Game.DIM_Y) { object.yVelocity = 0; }
-    // }
-
     // for items
     hasCollison(rect1, rect2) {
         if (!(rect1.pos[0] > rect2.pos[0] + rect2.width || // x start of 1 after end of 2
@@ -151,6 +162,10 @@ class Game {
             return false;
         }
     }
+
+    // collisionType(pos1, pos2) {
+    //     if (pos1[0] > pos2[0] ) return ""
+    // }
 }
 
 export default Game;
