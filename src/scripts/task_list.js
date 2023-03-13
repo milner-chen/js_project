@@ -20,27 +20,39 @@ class TaskList {
     }
 
     isNextItem(item) {
-        return item.type === this.allItems.type;
+        return item.type === this.allItems[0].type;
     }
 
     drawList(ctx) {
-        ctx.strokeStyle = "#a9c4f5";
-        ctx.fillStyle = "#7ba5f0";
+        // ctx.strokeStyle = "#a9c4f5";
+        // ctx.fillStyle = "#7ba5f0";
+        // ctx.strokeStyle = "coral";
+        // ctx.strokeStyle = "#f8a379";
+        // ctx.fillStyle = "#d79e9a";
+        ctx.fillStyle = "#921208";
         // ctx.lineWidth = 10;
         ctx.beginPath();
-        ctx.roundRect(this.pos[0], this.pos[1], 20 * (this.list.length), this.height, 5);
+        let listWidth =  35 * (this.list.length);
+        if (listWidth < 200) listWidth = 200;
+        // could have a minimum width + expand from there..
+        ctx.roundRect(this.pos[0], this.pos[1], listWidth, this.height, 5);
         ctx.stroke();
         ctx.fill();
+
+        ctx.font = "33px Cute Font";
+        ctx.textAlign = "center";
+        ctx.fillStyle = "beige";
+        ctx.fillText("Collect in Order!", (listWidth / 2), 50);
     }
 
     drawContents(ctx, list) {
         ctx.font = "20px Cute Font";
         ctx.fillStyle = "black";
-        for (let i = 0; i < list.length / 2; i++) {
+        for (let i = 0; i < list.length; i++) {
             let task = list[i];
             // ctx.fillText(task.type, 50, 50 + (i * 15));
             // console.log(task.type);
-            task.draw(ctx, [35 + (i * 30), 50]);
+            task.draw(ctx, [35 + (i * 30), 75]);
         }
     }
 

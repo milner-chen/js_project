@@ -15,7 +15,7 @@ class Game {
         // create bg here
         Game.BG.src = "src/assets/bg_1.png";
         // should have a player
-        this.player = new Player([0, 500]);
+        this.player = new Player([0, 400]);
         window.player = this.player;
         // should have platforms -> arr
         this.platforms = [
@@ -27,11 +27,11 @@ class Game {
             new Platform([362, 495], 100, 20),
             new Platform([408, 216], 150, 20),
             new Platform([479, 395], 150, 20),
-            new Platform([529, 103], 75, 20),
+            new Platform([529, 113], 75, 20),
             new Platform([652, 290], 150, 20),
-            new Platform([727, 77], 100, 20),
+            new Platform([727, 80], 100, 20),
             new Platform([727, 455], 150, 20),
-            new Platform([779, 165], 150, 20),
+            new Platform([779, 185], 150, 20),
             new Platform([854, 355], 100, 20)
         ];
         // should have items -> arr
@@ -43,12 +43,12 @@ class Game {
         
         this.items = [
             new Item("bread", [170, 405 - 25]),
-            new Item("jam", [854, 355 - 25]),
+            new Item("jam", [350, 250]),
             new Item("dumplings", [400, 400]),
             new Item("egg", [900, 300]),
             new Item("jelly", [600, 340]),
             new Item("pancakes", [500, 150]),
-            new Item("strawberrycake", [700, 500]),
+            new Item("strawberrycake", [760, 60]),
         ];
         
         this.tasklist = new TaskList(this.items);
@@ -75,10 +75,10 @@ class Game {
 
     drawText(ctx) {
         ctx.font = "40px Cute Font";
-        ctx.textAlign = "center";
-        ctx.fillStyle = "beige";
+        // ctx.textAlign = "center";
+        // ctx.fillStyle = "beige";
         ctx.fillText("Score: " + this.score, 499.5, 50.5);
-        ctx.fillStyle = "coral";
+        ctx.fillStyle = "#FF7F50";
         ctx.fillText("Score: " + this.score, 500, 50);
     }
 
@@ -100,15 +100,16 @@ class Game {
         for (let i = 0; i < this.items.length; i++) {
             let obj = this.items[i];
             obj.draw(ctx);
-            let border = new Border(obj);
-            border.draw(ctx);
+            // let border = new Border(obj);
+            // border.draw(ctx);
             if (this.hasCollison(this.player, obj)) {
                 // debugger;
-                if (obj instanceof Item) {
-                    this.found.push(this.items.splice(i, 1));
-                    console.log(this.items);
+                if (this.tasklist.isNextItem(obj)) {
+                    // this.found.push(this.items.splice(i, 1));
+                    this.found.push(this.items.shift());
+                    this.score += 100;
                     console.log(this.tasklist.found); // could draw a line throught the ones already found
-                }
+                } else console.log(this.items);
             }
         }
         

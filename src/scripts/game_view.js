@@ -5,13 +5,13 @@ console.log("hi, from game view");
 // this is where we will actually run the game
 // this is basically the game loop?
 class GameView {
-    static dist = 3;
-    static MOVES = {
-        ArrowLeft: [-GameView.dist, 0],
-        ArrowRight: [GameView.dist, 0],
-        ArrowUp: [0, -GameView.dist],
-        ArrowDown: [0, GameView.dist]
-    };
+    // static dist = 3;
+    // static MOVES = {
+    //     ArrowLeft: [-GameView.dist, 0],
+    //     ArrowRight: [GameView.dist, 0],
+    //     ArrowUp: [0, -GameView.dist],
+    //     ArrowDown: [0, GameView.dist]
+    // };
     
     constructor(game, ctx) {
         this.game = game;
