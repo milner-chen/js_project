@@ -43,7 +43,7 @@ class Game {
         
         this.items = [
             new Item("bread", [170, 405 - 25]),
-            new Item("jam", [854, 355 - 25]),
+            new Item("jam", [350, 250]),
             new Item("dumplings", [400, 400]),
             new Item("egg", [900, 300]),
             new Item("jelly", [600, 340]),
@@ -107,6 +107,7 @@ class Game {
                 if (this.tasklist.isNextItem(obj)) {
                     // this.found.push(this.items.splice(i, 1));
                     this.found.push(this.items.shift());
+                    this.score += 100;
                     console.log(this.tasklist.found); // could draw a line throught the ones already found
                 } else console.log(this.items);
             }

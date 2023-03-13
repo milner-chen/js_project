@@ -26,14 +26,22 @@ class TaskList {
     drawList(ctx) {
         // ctx.strokeStyle = "#a9c4f5";
         // ctx.fillStyle = "#7ba5f0";
-        ctx.strokeStyle = "coral";
-        ctx.fillStyle = 
+        // ctx.strokeStyle = "coral";
+        // ctx.strokeStyle = "#f8a379";
+        // ctx.fillStyle = "#d79e9a";
+        ctx.fillStyle = "#921208";
         // ctx.lineWidth = 10;
         ctx.beginPath();
+        let listWidth =  35 * (this.list.length);
         // could have a minimum width + expand from there..
-        ctx.roundRect(this.pos[0], this.pos[1], 35 * (this.list.length), this.height, 5);
+        ctx.roundRect(this.pos[0], this.pos[1], listWidth, this.height, 5);
         ctx.stroke();
         ctx.fill();
+
+        ctx.font = "33px Cute Font";
+        ctx.textAlign = "center";
+        ctx.fillStyle = "beige";
+        ctx.fillText("Collect in Order!", (listWidth / 2), 50);
     }
 
     drawContents(ctx, list) {
@@ -43,7 +51,7 @@ class TaskList {
             let task = list[i];
             // ctx.fillText(task.type, 50, 50 + (i * 15));
             // console.log(task.type);
-            task.draw(ctx, [35 + (i * 30), 50]);
+            task.draw(ctx, [35 + (i * 30), 75]);
         }
     }
 
