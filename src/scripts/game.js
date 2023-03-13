@@ -15,7 +15,7 @@ class Game {
         // create bg here
         Game.BG.src = "src/assets/bg_1.png";
         // should have a player
-        this.player = new Player([0, 500]);
+        this.player = new Player([0, 400]);
         window.player = this.player;
         // should have platforms -> arr
         this.platforms = [
@@ -27,11 +27,11 @@ class Game {
             new Platform([362, 495], 100, 20),
             new Platform([408, 216], 150, 20),
             new Platform([479, 395], 150, 20),
-            new Platform([529, 103], 75, 20),
+            new Platform([529, 113], 75, 20),
             new Platform([652, 290], 150, 20),
-            new Platform([727, 77], 100, 20),
+            new Platform([727, 80], 100, 20),
             new Platform([727, 455], 150, 20),
-            new Platform([779, 165], 150, 20),
+            new Platform([779, 185], 150, 20),
             new Platform([854, 355], 100, 20)
         ];
         // should have items -> arr
@@ -48,7 +48,7 @@ class Game {
             new Item("egg", [900, 300]),
             new Item("jelly", [600, 340]),
             new Item("pancakes", [500, 150]),
-            new Item("strawberrycake", [700, 500]),
+            new Item("strawberrycake", [760, 60]),
         ];
         
         this.tasklist = new TaskList(this.items);
@@ -75,7 +75,7 @@ class Game {
 
     drawText(ctx) {
         ctx.font = "40px Cute Font";
-        ctx.textAlign = "center";
+        // ctx.textAlign = "center";
         // ctx.fillStyle = "beige";
         ctx.fillText("Score: " + this.score, 499.5, 50.5);
         ctx.fillStyle = "#FF7F50";

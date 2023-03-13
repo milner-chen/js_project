@@ -33,6 +33,7 @@ class TaskList {
         // ctx.lineWidth = 10;
         ctx.beginPath();
         let listWidth =  35 * (this.list.length);
+        if (listWidth < 200) listWidth = 200;
         // could have a minimum width + expand from there..
         ctx.roundRect(this.pos[0], this.pos[1], listWidth, this.height, 5);
         ctx.stroke();
