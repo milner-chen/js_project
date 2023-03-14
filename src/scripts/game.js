@@ -18,7 +18,7 @@ class Game {
         Game.BG.src = "src/assets/bg_1.png";
         // should have a player
         // debugger;
-        this.player = new Player([0, 0]);
+        this.player = new Player([0, 400]);
         console.log("player created at:", this.player.pos);
         window.player = this.player;
         // should have platforms -> arr
@@ -46,6 +46,7 @@ class Game {
         // this.list = ["jam", "bread"];
         
         this.items = [
+            // new Item("strawberrycake", [500, 570]), // testing purposes
             new Item("bread", [170, 405 - 25]),
             new Item("jam", [350, 250]),
             new Item("dumplings", [400, 400]),
@@ -116,14 +117,14 @@ class Game {
         // note that this (0, 0) is actually the dimensions of the sprite
         this.platforms.forEach(obj => {
             obj.draw(ctx);
-            let border = new Border(obj);
-            border.draw(ctx);
+            // let border = new Border(obj);
+            // border.draw(ctx);
         })
         for (let i = 0; i < this.items.length; i++) {
             let obj = this.items[i];
             obj.draw(ctx);
-            let border = new Border(obj);
-            border.draw(ctx);
+            // let border = new Border(obj);
+            // border.draw(ctx);
             if (this.hasCollison(this.player, obj)) {
                 // debugger;
                 // let collision = false;
@@ -142,7 +143,7 @@ class Game {
                         setTimeout(() => {
                             console.log("testing timeout");
                             obj.collision = false;
-                        }, 1000);
+                        }, 2000);
                             console.log(obj.collision);
                     }
                         // if (obj.count === 0) { obj.count = 19; }
@@ -185,7 +186,6 @@ class Game {
         // ctx.font = "30px serif";
         // ctx.fillText("current score", 400, 50);
 
-
         this.player.drawSprite(ctx, this.player.img[0], this.frame);
         // console.log("action row: ", this.player.row);
         console.log("frame col: ", this.frame);
@@ -208,9 +208,9 @@ class Game {
     // for items
     // not enough clarity about the type of collision for later
     hasCollison(rect1, rect2) {
-        if (!(rect1.pos[0] > rect2.pos[0] + (rect2.width) || // x start of 1 after end of 2
-            rect1.pos[0] + (rect1.width) < rect2.pos[0] || // x end of 1 before start of 2
-            rect1.pos[1] > rect2.pos[1] + (rect2.height) || // y top of 1 below bottom of 2
+        if (!(rect1.pos[0] + (rect1.width * .3) > rect2.pos[0] + (rect2.width) || // x start of 1 after end of 2
+            rect1.pos[0] + (rect1.width * .65) < rect2.pos[0] || // x end of 1 before start of 2
+            rect1.pos[1] + (rect1.height * .7) > rect2.pos[1] + (rect2.height) || // y top of 1 below bottom of 2
             rect1.pos[1] + (rect1.height) < rect2.pos[1] // y bottom of 1 above top of 2
         )) { // collision found
             return true;

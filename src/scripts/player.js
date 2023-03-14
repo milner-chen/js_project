@@ -19,8 +19,8 @@ class Player {
         this.xVelocity = 0;
         this.yVelocity = 0;
         this.jumping = false;
-        this.friction = 0.8;
-        this.gravity = 0.5;
+        this.friction = 0.75;
+        this.gravity = 0.45;
         this.up = false;
         this.left = false;
         this.right = false;
@@ -35,6 +35,7 @@ class Player {
         this.row = 0;
         this.img = [new Image(), new Image()];
         this.img[0].src = "src/assets/cat_sheet.png";
+        // this.img[1].src = "src/assets/cat_sheet_rev.png";
         this.maxFrames = 1;
         this.frameSpeed = 15;
 
@@ -47,7 +48,23 @@ class Player {
 
     drawSprite(ctx, img, col) {
         // (image, sx, sy, sWidth, sHeight, cx, cy, cWidth, cHeight)
-        ctx.drawImage(img, col * this.xdim, this.row * this.ydim, this.xdim, this.ydim, ...this.pos, this.width, this.height);
+
+        if (this.left) {
+            let revx = -(this.pos[0] + this.width);
+            ctx.save();
+            ctx.scale(-1, 1);
+            // this.pos[0] = -(this.pos[0] + this.width);
+            ctx.drawImage(img, col * this.xdim, this.row * this.ydim, this.xdim, this.ydim, revx, this.pos[1], this.width, this.height);
+            ctx.restore();
+        }
+        else if (this.right) {
+
+            ctx.drawImage(img, col * this.xdim, this.row * this.ydim, this.xdim, this.ydim, ...this.pos, this.width, this.height);
+        } else {
+            ctx.drawImage(img, col * this.xdim, this.row * this.ydim, this.xdim, this.ydim, ...this.pos, this.width, this.height);
+
+        }
+
     }
 
     bindKeys() {
@@ -97,14 +114,14 @@ class Player {
         return this.pos[0] >= this.CHEIGHT - this.height;
     }
     move() {
-        console.log("action row: ", this.row);
-        console.log(this.yVelocity);
-        if (this.up && this.right) {
-            this.frameSpeed = 10;
+        // console.log("action row: ", this.row);
+        // console.log(this.yVelocity);
+        if (this.up) {
+            this.frameSpeed = 30;
             this.maxFrames = 3;
             this.row = 19;
         } else if (this.yVelocity < 0) {
-            this.frameSpeed = 10;
+            this.frameSpeed = 30;
             this.maxFrames = 7;
             this.row = 47;
         }
@@ -138,8 +155,8 @@ class Player {
         // console.log(Player.CWIDTH);
 
         // left and right bounds
-        if (this.pos[0] + this.xVelocity < 0
-        || this.pos[0] + this.width + this.xVelocity > Player.CWIDTH) {
+        if (this.pos[0] + (this.width * .3) + this.xVelocity < 0
+        || this.pos[0] + (this.width * .7) + this.xVelocity > Player.CWIDTH) {
             this.xVelocity = 0;
         } else {
             this.pos[0] += this.xVelocity;

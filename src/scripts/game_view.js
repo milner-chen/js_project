@@ -64,57 +64,12 @@ class GameView {
         objects.forEach(obj => {
             if (player.pos[1] + player.height <= obj.pos[1]
                 && player.pos[1] + player.height + player.yVelocity >= obj.pos[1]
-                && player.pos[0] + player.width >= obj.pos[0]
+                && player.pos[0] + (player.width * .7) >= obj.pos[0]
                 && player.pos[0] + (player.width / 2) <= obj.pos[0] + obj.width) {
                 player.yVelocity = 0;
                 player.xVelocity = 0;
             }
         })
-
-
-
-        // objects.forEach(obj => {
-        //     // console.log("player:");
-        //     // console.log(player.pos);
-        //     // console.log(player.width, player.height);
-        //     // console.log(obj);
-        //     // console.log(obj.pos);
-        //     // console.log(obj.width, obj.height);
-        //     if (player.pos[1] + player.height <= obj.pos[1] + obj.height
-        //         && player.pos[1] + player.height >= obj.pos[1] //- obj.height
-        //         && player.pos[0] + player.width >= obj.pos[0] + obj.width
-        //         && player.pos[0] <= obj.pos[0]) {
-        //         player.yVelocity = 0;
-        //         player.xVelocity = 0;
-        //         debugger
-        //         console.log("should stand on platform");
-        //         // return player.grounded = true;
-        //     } //else { player.grounded = false; }
-        // })
-
-        // objects.forEach(obj => {
-        //     if (!(player.pos[0] > obj.pos[0] + (obj.width) || // x start of 1 after end of 2
-        //     player.pos[0] + (player.width) < obj.pos[0] || // x end of 1 before start of 2
-        //     player.pos[1] > obj.pos[1] + (obj.height) || // y top of 1 below bottom of 2
-        //     player.pos[1] + (player.height) < obj.pos[1] // y bottom of 1 above top of 2
-        // )) {
-        //         player.yVelocity = 0;
-        //     }
-        // });
-
-
-        // game over: reload page;
-        // if (this.game.lives.length === 0) document.location.reload();
-        // clearInterval(setInterval(draw, 10));
-
-        // testing sprites
-        // this.sprite.testSprite(this.ctx, 47, this.frame, 400, 55);
-        // this.sprite.testSprite(this.ctx, 46, this.frame, 255, 145);
-
-
-
-
-
 
         console.log(player.pos);
         console.log(player.width);
