@@ -43,9 +43,9 @@ class GameView {
         this.game.draw(this.ctx);
 
         
-        ctx.font = "40px Cute Font";
-        ctx.fontWeight = "bold";
-        ctx.fillStyle = "#FF7F50";
+        this.ctx.font = "40px Cute Font";
+        this.ctx.fillStyle = "#FF7F50";
+        this.ctx.textAlign = "center";
         this.ctx.fillText(this.printTimer(this.timer - this.count), 500, 80);
         this.ctx.fillText(this.printTimer(this.timer - this.count), 500, 80.8);
 
