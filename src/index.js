@@ -1,5 +1,8 @@
 console.log("webpack is fine");
 
+import Sprite from "./sprite";
+window.Sprite = Sprite;
+
 import Border from "./scripts/border";
 window.Border = Border;
 
@@ -44,9 +47,10 @@ REMINDER:
     GET OTHER STUFF DONE FIRSTTT!!!
 
 Some immediate to-do's
-    - some game logic
-        - add lives -> where should i put this logic? fr...
-        - timer?
+    - animation
+        - create an arr of the length 
+    - game over -> being able to lose
+    - user instructions
     
 
 A little less immediate to-do's
@@ -56,9 +60,6 @@ A little less immediate to-do's
         - more levels?
 
     General to be fixed stuff:
-    - task list moves
-        - console log the pos, width, and length
-    - remove the border on the platforms
 
 More far off, but important stuff that you cannot for get:
     - user instructions

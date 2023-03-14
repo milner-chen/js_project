@@ -11,10 +11,10 @@ class Player {
         Player.IMG.src = "src/assets/cat.png";
         // this.IMG = IMG;
         this.pos = pos;
-        this.xdim = 23; // dimensions of the actual image
-        this.ydim = 23;
-        this.width = this.xdim * 1.5; //scaled size
-        this.height = this.ydim * 1.5;
+        // this.xdim = 23; // dimensions of the actual image
+        // this.ydim = 23;
+        // this.width = this.xdim * 1.5; //scaled size
+        // this.height = this.ydim * 1.5;
         //  new additions
         this.xVelocity = 0;
         this.yVelocity = 0;
@@ -24,11 +24,30 @@ class Player {
         this.up = false;
         this.left = false;
         this.right = false;
+
+        // testing sprite animation
+        // this.frame = 0;
+        this.xdim = 32;
+        this.ydim = 32;
+        this.scale = 3;
+        this.width = this.xdim * this.scale;
+        this.height = this.ydim * this.scale;
+        this.row = 0;
+        this.img = [new Image(), new Image()];
+        this.img[0].src = "src/assets/cat_sheet.png";
+        this.maxFrames = 1;
+        this.frameSpeed = 15;
+
     }
 
     draw(ctx, sx, sy) {
         // (image, sx, sy, sWidth, sHeight, cx, cy, cWidth, cHeight)
         ctx.drawImage(Player.IMG, sx, sy, this.xdim, this.ydim, ...this.pos, this.width, this.height);
+    }
+
+    drawSprite(ctx, img, col) {
+        // (image, sx, sy, sWidth, sHeight, cx, cy, cWidth, cHeight)
+        ctx.drawImage(img, col * this.xdim, this.row * this.ydim, this.xdim, this.ydim, ...this.pos, this.width, this.height);
     }
 
     bindKeys() {
@@ -37,8 +56,10 @@ class Player {
             if (event.key === "ArrowUp" && !this.jumping) {
                 if (this.yVelocity == 0) {
                     this.yVelocity -= 10;
+                    // this.row = 19;
                 }
                 this.jumping = true;
+                // this.row = 20;
                 // maybe check if yVelocity is > 0, then don't add more or something
             }
             if (event.key === "ArrowLeft") {
@@ -46,6 +67,7 @@ class Player {
             }
             if (event.key === "ArrowRight") {
                 this.right = true;
+                // this.row = 5;
             }
             // console.log("up", this.up);
             // console.log("left", this.left);
@@ -75,12 +97,40 @@ class Player {
         return this.pos[0] >= this.CHEIGHT - this.height;
     }
     move() {
-
-        if (this.right) {
+        console.log("action row: ", this.row);
+        console.log(this.yVelocity);
+        if (this.up && this.right) {
+            this.frameSpeed = 10;
+            this.maxFrames = 3;
+            this.row = 19;
+        } else if (this.yVelocity < 0) {
+            this.frameSpeed = 10;
+            this.maxFrames = 7;
+            this.row = 47;
+        }
+        // else if (this.up && this.yVelocity < 0) {
+        //     this.maxFrames = 7;
+        //     this.row = 47;
+        // } else if (this.up && this.yVelocity > 0) {
+        //     this.maxFrames = 7;
+        //     this.row = 48;
+        // }
+        else if (this.right) {
+            this.frameSpeed = 10;
             this.xVelocity = 3;
+            this.row = 5;
+            this.maxFrames = 7;
         } else if (this.left) {
             this.xVelocity = -3;
-        } else this.xVelocity = 0;
+            this.frameSpeed = 10;
+        } 
+
+        else {
+            this.row = 2;
+            this.frameSpeed = 40;
+            this.maxFrames = 7;
+            this.xVelocity = 0;
+        }
 
         this.xVelocity *= this.friction;
         // console.log(this.pos[0]);
