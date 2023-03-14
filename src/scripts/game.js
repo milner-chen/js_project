@@ -81,12 +81,13 @@ class Game {
     // }    
 
     drawText(ctx) {
-        ctx.font = "40px Cute Font";
-        // ctx.textAlign = "center";
+        ctx.font = "60px Cute Font";
+        ctx.textAlign = "center";
         // ctx.fillStyle = "beige";
-        ctx.fillText("Score: " + this.score, 499.5, 50.5);
+        // ctx.fillText("Score: " + this.score, 499.5, 50.5);
         ctx.fillStyle = "#FF7F50";
         ctx.fillText("Score: " + this.score, 500, 50);
+        ctx.fillText("Score: " + this.score, 500, 51);
     }
 
     draw(ctx) {
@@ -99,7 +100,7 @@ class Game {
         
         for (let i = 0; i < this.lives.length; i++) {//
             let life = this.lives[i];
-            life.draw(ctx, Game.DIM_X - 100 - (i * 35), 30);
+            life.draw(ctx, Game.DIM_X - 70 - (i * 35), 30);
         }
         // this.items.forEach(item => item.draw(ctx));
 
@@ -116,27 +117,51 @@ class Game {
             // border.draw(ctx);
             if (this.hasCollison(this.player, obj)) {
                 // debugger;
+                // let collision = false;
+
                 if (this.tasklist.isNextItem(obj)) {
+                    // collsion = true;
                     // this.found.push(this.items.splice(i, 1));
                     this.found.push(this.items.shift());
                     this.score += 100;
-                    console.log(this.tasklist.found); // could draw a line throught the ones already found
+                    // console.log(this.tasklist.found); // could draw a line throught the ones already found
                 } else {
+                    if (!obj.collision) {
+                        this.lives.pop();
+
+                        obj.collision = true;
+                        setTimeout(() => {
+                            console.log("testing timeout");
+                            obj.collision = false;
+                        }, 500);
+                            console.log(obj.collision);
+                    }
+                        // if (obj.count === 0) { obj.count = 19; }
                     // debugger;
                     // handle what to do if collision
-                    // this.player.xVelocity = -1;
-                    // this.player.pos[1] = ;
-                    this.lives.pop();
-                    console.log(this.items);
+
+                    // just shove the player away...
+                    // this.player.pos[0] += obj.width;
+                    // this.player.xVelocity *= 0.5;
+                    // this.player.pos[1] += obj.height;
+                    // this.player.yVelocity *= 0.5;
+
+                    // this.player.pos[0] > (obj.pos[0] / 2) ? this.player.pos[0] += obj.width : this.player.pos[0] -= obj.width;
+                    // this.player.pos[1] > (obj.pos[1] / 2) ? this.player.pos[1] += obj.height : this.player.pos[1] -= obj.height;
+
+                    // this.lives.pop();
+                    // console.log(this.items);
                 }
             }
+            obj.count -= 1;
+            if (obj.count === 0) obj.count = 19;
         }
         
         this.player.draw(ctx, 5, 5);
         
-        let cat = new Border(this.player);
-        cat.draw(ctx);
-        window.cat = cat;
+        // let cat = new Border(this.player);
+        // cat.draw(ctx);
+        // window.cat = cat;
         // console.log(cat);
         // ctx.font = "30px serif";
         // ctx.fillText("current score", 400, 50);
@@ -151,11 +176,12 @@ class Game {
     }
 
     // for items
+    // not enough clarity about the type of collision for later
     hasCollison(rect1, rect2) {
-        if (!(rect1.pos[0] > rect2.pos[0] + rect2.width || // x start of 1 after end of 2
-            rect1.pos[0] + rect1.width < rect2.pos[0] || // x end of 1 before start of 2
-            rect1.pos[1] > rect2.pos[1] + rect2.height || // y top of 1 below bottom of 2
-            rect1.pos[1] + rect1.height < rect2.pos[1] // y bottom of 1 above top of 2
+        if (!(rect1.pos[0] > rect2.pos[0] + (rect2.width) || // x start of 1 after end of 2
+            rect1.pos[0] + (rect1.width) < rect2.pos[0] || // x end of 1 before start of 2
+            rect1.pos[1] > rect2.pos[1] + (rect2.height) || // y top of 1 below bottom of 2
+            rect1.pos[1] + (rect2.height) < rect2.pos[1] // y bottom of 1 above top of 2
         )) { // collision found
             return true;
         } else { // collision not found

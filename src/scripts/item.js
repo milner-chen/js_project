@@ -4,14 +4,10 @@ class Item {
         this.img = new Image();
         this.width = 32;
         this.height = 32;
+        this.collision = false; // if collision is false && hascollision -> decrease lives
         // this.color;
         this.pos = pos;
-        // if (this.type === "fish") {
-        //     // this.width = 15;
-        //     // this.height = 10;
-        //     // this.color = "coral";
-        //     // this.createFish();
-        // }
+
         switch (this.type) {
             case "bread":
                 this.img.src = "src/assets/07_bread.png";

@@ -47,9 +47,9 @@ class Player {
             if (event.key === "ArrowRight") {
                 this.right = true;
             }
-            console.log("up", this.up);
-            console.log("left", this.left);
-            console.log("right", this.right);
+            // console.log("up", this.up);
+            // console.log("left", this.left);
+            // console.log("right", this.right);
         })
         window.addEventListener("keyup", event => {
             // keys[event.key] = false;
@@ -65,9 +65,9 @@ class Player {
                 this.right = false;
                 // this.xVelocity = 0;
             }
-            console.log("up", this.up);
-            console.log("left", this.left);
-            console.log("right", this.right);
+            // console.log("up", this.up);
+            // console.log("left", this.left);
+            // console.log("right", this.right);
         })
     }
 

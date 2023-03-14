@@ -26,11 +26,11 @@ class TaskList {
     drawList(ctx) {
         // ctx.strokeStyle = "#a9c4f5";
         // ctx.fillStyle = "#7ba5f0";
-        // ctx.strokeStyle = "coral";
+        ctx.strokeStyle = "coral";
         // ctx.strokeStyle = "#f8a379";
         // ctx.fillStyle = "#d79e9a";
         ctx.fillStyle = "#921208";
-        // ctx.lineWidth = 10;
+        ctx.lineWidth = 3;
         ctx.beginPath();
         let listWidth =  35 * (this.list.length);
         if (listWidth < 200) listWidth = 200;
@@ -40,19 +40,19 @@ class TaskList {
         ctx.fill();
 
         ctx.font = "33px Cute Font";
-        ctx.textAlign = "center";
+        // ctx.textAlign = "center";
         ctx.fillStyle = "beige";
-        ctx.fillText("Collect in Order!", (listWidth / 2), 50);
+        ctx.fillText("Collect in Order!", this.pos[1] + 15, 50);
     }
 
     drawContents(ctx, list) {
-        ctx.font = "20px Cute Font";
-        ctx.fillStyle = "black";
+        // ctx.font = "20px Cute Font";
+        // ctx.fillStyle = "black";
         for (let i = 0; i < list.length; i++) {
             let task = list[i];
             // ctx.fillText(task.type, 50, 50 + (i * 15));
             // console.log(task.type);
-            task.draw(ctx, [35 + (i * 30), 75]);
+            task.draw(ctx, [this.pos[1] + 15 + (i * 30), 75]);
         }
     }
 
