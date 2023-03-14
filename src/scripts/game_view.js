@@ -5,67 +5,57 @@ console.log("hi, from game view");
 // this is where we will actually run the game
 // this is basically the game loop?
 class GameView {
-    // static dist = 3;
-    // static MOVES = {
-    //     ArrowLeft: [-GameView.dist, 0],
-    //     ArrowRight: [GameView.dist, 0],
-    //     ArrowUp: [0, -GameView.dist],
-    //     ArrowDown: [0, GameView.dist]
-    // };
     
     constructor(game, ctx) {
         this.game = game;
         this.ctx = ctx;
-        this.startTime = 60;
+        // this.startTime = 60;
+        // this.step = 0;
+        this.timer = 61;
+        this.count = 0;
     }
-    
-    // bindKeys() {
-    //     const player = this.game.player;
-    //     let pressedKeys = {};
-    //     window.addEventListener("keydown", event => {
-    //         pressedKeys[event.key] = true;
-    //         // if (pressedKeys["ArrowUp"]) this.game.player.move(GameView.MOVES["ArrowUp"]);
-    //         // if (pressedKeys["ArrowDown"]) this.game.player.move(GameView.MOVES["ArrowDown"]);
-    //         // if (pressedKeys["ArrowLeft"]) this.game.player.move(GameView.MOVES["ArrowLeft"]);
-    //         // if (pressedKeys["ArrowRight"]) this.game.player.move(GameView.MOVES["ArrowRight"]);
-    //         console.log(event.key);
-    //         console.log(player.pos);
-    //         console.log(player.xVelocity);
-    //         console.log(player.yVelocity);
-    //         // debugger;
-    //         // handle logic elsewhere
-    //         // if (pressedKeys["ArrowUp"]) player.moveJump();
-    //         // if (pressedKeys["ArrowLeft"]) player.moveLeft();
-    //         // if (pressedKeys["ArrowRight"]) player.moveRight();
-    //         // event.preventDefault();
 
+    printTimer(start) {
+        let minutes = Math.floor(start / 60);
+        let seconds = Math.floor(start % 60);
+        let str = ``;
+        if (seconds === 0) {
+            str = "0";
+        } else if (seconds < 10) str = "0";
+        if (start <= 0) return "done";
+        return `${minutes}:${str}${seconds}`;
+    }
 
-    //     });
-    //     window.addEventListener("keyup", event => {
-    //         pressedKeys[event.key] = false;
-    //         console.log(event.key);
-            
-    //         if (event.key === "ArrowUp") { player.jumping = false; player.yVelocity += 10; }
-    //         if (event.key === "ArrowLeft") player.xVelocity = 0;
-    //         if (event.key === "ArrowRight") player.xVelocity = 0;
-    //     })
-
-    //         // if (MOVES[event.key]) this.game.player.move(MOVES[event.key]);
-    //         // console.log("player pos:", this.game.player.pos);
-    //     // });
-    //     // console.log(this.game.player.pos);
-
+    // updateTimer() {
+    //     this.step += 1;
+    //     if (this.step === 144) {
+    //         this.startTime -= 1;
+    //         this.step = 0;
+    //     }
     // }
 
-    animate() {
+    animate(timeStamp) {
+        this.count = timeStamp / 1000;
         const player = this.game.player;
         const objects = this.game.platforms;
         // const 
         this.game.moveObjects();
         this.game.draw(this.ctx);
+
         
+        ctx.font = "40px Cute Font";
+        ctx.fontWeight = "bold";
+        ctx.fillStyle = "#FF7F50";
+        this.ctx.fillText(this.printTimer(this.timer - this.count), 500, 80);
+        this.ctx.fillText(this.printTimer(this.timer - this.count), 500, 80.8);
+
+
+        // this.ctx.fillText(this.printTimer(this.startTime), 500, 200);
+        // this.updateTimer();
         // this.ctx.fillText(`${Math.floor(this.startTime/60)}:${this.startTime % 60}`, 500, 300);
         // this.startTime -= 1/60;
+        // this.ctx.fillText(Math.floor(this.originTime - performance.now() /1000), 500, 250);
+
         
         requestAnimationFrame(this.animate.bind(this));
 
@@ -88,6 +78,7 @@ class GameView {
 
     start() {
         this.game.player.bindKeys();
+        // this.originTime = performance.timeOrigin;
         // debugger;
         // this.bindKeys();
         // this.prevTime = 0;

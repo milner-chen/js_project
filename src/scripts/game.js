@@ -81,12 +81,13 @@ class Game {
     // }    
 
     drawText(ctx) {
-        ctx.font = "40px Cute Font";
-        // ctx.textAlign = "center";
+        ctx.font = "60px Cute Font";
+        ctx.textAlign = "center";
         // ctx.fillStyle = "beige";
-        ctx.fillText("Score: " + this.score, 499.5, 50.5);
+        // ctx.fillText("Score: " + this.score, 499.5, 50.5);
         ctx.fillStyle = "#FF7F50";
         ctx.fillText("Score: " + this.score, 500, 50);
+        ctx.fillText("Score: " + this.score, 500, 51);
     }
 
     draw(ctx) {
@@ -99,7 +100,7 @@ class Game {
         
         for (let i = 0; i < this.lives.length; i++) {//
             let life = this.lives[i];
-            life.draw(ctx, Game.DIM_X - 100 - (i * 35), 30);
+            life.draw(ctx, Game.DIM_X - 70 - (i * 35), 30);
         }
         // this.items.forEach(item => item.draw(ctx));
 
@@ -112,8 +113,8 @@ class Game {
         for (let i = 0; i < this.items.length; i++) {
             let obj = this.items[i];
             obj.draw(ctx);
-            let border = new Border(obj);
-            border.draw(ctx);
+            // let border = new Border(obj);
+            // border.draw(ctx);
             if (this.hasCollison(this.player, obj)) {
                 // debugger;
                 // let collision = false;
@@ -158,9 +159,9 @@ class Game {
         
         this.player.draw(ctx, 5, 5);
         
-        let cat = new Border(this.player);
-        cat.draw(ctx);
-        window.cat = cat;
+        // let cat = new Border(this.player);
+        // cat.draw(ctx);
+        // window.cat = cat;
         // console.log(cat);
         // ctx.font = "30px serif";
         // ctx.fillText("current score", 400, 50);
