@@ -12,7 +12,7 @@ class GameView {
         this.timer = 91;
         // this.startTime = 60;
         // this.step = 0;
-        this.timer = 25;
+        // this.timer = 25;
         this.count = 0;
         // this.sprite = new Sprite();
         this.frame = 0;

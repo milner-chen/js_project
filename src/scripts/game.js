@@ -50,10 +50,10 @@ class Game {
             new Item("bread", [170, 405 - 25]),
             new Item("jam", [350, 250]),
             new Item("dumplings", [400, 400]),
-            // new Item("egg", [900, 300]),
-            // new Item("jelly", [600, 340]),
-            // new Item("pancakes", [500, 150]),
-            // new Item("strawberrycake", [760, 60]),
+            new Item("egg", [900, 300]),
+            new Item("jelly", [600, 340]),
+            new Item("pancakes", [500, 150]),
+            new Item("strawberrycake", [760, 60]),
         ];
         
         this.tasklist = new TaskList(this.items);
