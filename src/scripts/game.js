@@ -19,7 +19,7 @@ class Game {
         // should have a player
         // debugger;
         this.player = new Player([0, 400]);
-        console.log("player created at:", this.player.pos);
+        // console.log("player created at:", this.player.pos);
         window.player = this.player;
         // should have platforms -> arr
         this.platforms = [
@@ -70,10 +70,13 @@ class Game {
         ];
 
 
-        this.sprite = new Sprite();
+        // this.sprite = new Sprite();
 
         this.frame = 0;
         this.frameCount = 0;
+
+        this.lose = false;
+        this.win = false;
     }
 
     // createPlatforms() {
@@ -141,10 +144,10 @@ class Game {
                         // this.player.pos[0] - 5;
                         obj.collision = true;
                         setTimeout(() => {
-                            console.log("testing timeout");
+                            // console.log("testing timeout");
                             obj.collision = false;
                         }, 2000);
-                            console.log(obj.collision);
+                            // console.log(obj.collision);
                     }
                         // if (obj.count === 0) { obj.count = 19; }
                     // debugger;
@@ -165,6 +168,20 @@ class Game {
             }
             obj.count -= 1;
             if (obj.count === 0) obj.count = 19;
+
+            
+            if (this.lives.length === 0) {
+                setTimeout(() => {
+                    this.lose = true;
+                }, 10);         
+            }
+            // console.log(this.items);
+            if (this.items.length === 0) {
+                // console.log("the list is empty");
+                setTimeout(() => {
+                    this.win = true;
+                }, 25); 
+            }
         }
         
 
@@ -188,7 +205,7 @@ class Game {
 
         this.player.drawSprite(ctx, this.player.img[0], this.frame);
         // console.log("action row: ", this.player.row);
-        console.log("frame col: ", this.frame);
+        // console.log("frame col: ", this.frame);
         if (this.frameCount >= this.player.frameSpeed) {
             this.frame++;
             if (this.frame > this.player.maxFrames) this.frame = 0;

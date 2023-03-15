@@ -36,6 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const game = new Game();
     new GameView(game, ctx).start();
 
+    // const loseButton = getElementById("lose-button");
+    // const loseModal = getElementById("lose-modal");
+
+    // loseButton.onclick = () => {
+    //     loseModal.style.display = "block";
+    // }
+
 });
 
 /*
@@ -47,13 +54,15 @@ REMINDER:
     GET OTHER STUFF DONE FIRSTTT!!!
 
 Some immediate to-do's
-    - animation
-        - create an arr of the length 
     - game over -> being able to lose
     - user instructions
     
 
 A little less immediate to-do's
+    Maybe a direction flag:
+        - this.left sets to left
+        - this.right sets to right
+        - add flag as a condition + not left and not right
 
     The entire map is hardcoded at the moment
         - idk how you are going to expand this...

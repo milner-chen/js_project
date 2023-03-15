@@ -38,6 +38,7 @@ class Player {
         // this.img[1].src = "src/assets/cat_sheet_rev.png";
         this.maxFrames = 1;
         this.frameSpeed = 15;
+        this.direction = "right";
 
     }
 
@@ -49,7 +50,7 @@ class Player {
     drawSprite(ctx, img, col) {
         // (image, sx, sy, sWidth, sHeight, cx, cy, cWidth, cHeight)
 
-        if (this.left) {
+        if (this.direction === "left") {
             let revx = -(this.pos[0] + this.width);
             ctx.save();
             ctx.scale(-1, 1);
@@ -57,7 +58,7 @@ class Player {
             ctx.drawImage(img, col * this.xdim, this.row * this.ydim, this.xdim, this.ydim, revx, this.pos[1], this.width, this.height);
             ctx.restore();
         }
-        else if (this.right) {
+        else if (this.direction === "right") {
 
             ctx.drawImage(img, col * this.xdim, this.row * this.ydim, this.xdim, this.ydim, ...this.pos, this.width, this.height);
         } else {
@@ -81,9 +82,11 @@ class Player {
             }
             if (event.key === "ArrowLeft") {
                 this.left = true;
+                this.direction = "left";
             }
             if (event.key === "ArrowRight") {
                 this.right = true;
+                this.direction = "right";
                 // this.row = 5;
             }
             // console.log("up", this.up);
