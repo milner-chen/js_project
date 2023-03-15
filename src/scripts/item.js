@@ -2,8 +2,8 @@ class Item {
     constructor(type, pos) {
         this.type = type;
         this.img = new Image();
-        this.width = 32;
-        this.height = 32;
+        this.width = 32 * 1.1;
+        this.height = 32 * 1.1;
         this.collision = false; // if collision is false && hascollision -> decrease lives
         // this.color;
         this.pos = pos;

@@ -40,9 +40,10 @@ class TaskList {
         ctx.fill();
 
         ctx.font = "33px Cute Font";
-        // ctx.textAlign = "center";
+        ctx.textAlign = "left";
         ctx.fillStyle = "beige";
-        ctx.fillText("Collect in Order!", this.pos[1] + 15, 50);
+        ctx.strokeStyle = "921208";
+        ctx.fillText("Collect in Order!", this.pos[0] + 15, 50);
     }
 
     drawContents(ctx, list) {
