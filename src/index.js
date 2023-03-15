@@ -28,20 +28,59 @@ document.addEventListener("DOMContentLoaded", () => {
     window.canvas = canvas;
     canvas.width = Game.DIM_X;
     canvas.height = Game.DIM_Y;
-    canvas.style.border = "2px solid coral";
+    canvas.style.border = "3px solid coral";
     const ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
     window.ctx = ctx;
 
-    const game = new Game();
-    new GameView(game, ctx).start();
+    // ctx.clearRect(0, 0, 1000, 600);
+    // ctx.fillStyle = "#921208";
+    // ctx.roundRect(this.pos[0], this.pos[1], listWidth, this.height, 5);
+    // ctx.fill();
+    // ctx.beginPath();
+    // ctx.drawImage(Game.BG, 0, 0, Game.DIM_X, Game.DIM_Y);
+    
+    const startButton = document.getElementById("start-button");
+    const startScreen = document.getElementById("start-screen");
+    startButton.addEventListener("click", () => {
+        console.log("start button has been clicked");
+        const game = new Game();
+        // console.log(game.running);
+        // game.running = true;
+        // console.log(game.running);
+        const gameView = new GameView(game, ctx);
+        // console.log(gameView);
+        // gameView.running = true;
+        gameView.start();
+        // console.log(gameView.count);
+        // this.count = timeStamp / 1000;
+        // game.count = 0;
+        startButton.style.display = "none";
+        startScreen.style.display = "none";
 
-    // const loseButton = getElementById("lose-button");
-    // const loseModal = getElementById("lose-modal");
+    });
 
-    // loseButton.onclick = () => {
-    //     loseModal.style.display = "block";
-    // }
+    const instructionsModal = document.getElementById("instructions-modal");
+    const instructionsButton = document.getElementById("instructions-button");
+    const close = document.getElementsByClassName("close")[0];
+
+    close.onclick = () => {
+        instructionsModal.style.display = "none";
+    }
+
+    window.onclick = (event) => {
+        if (event.target === instructionsModal) {
+
+            instructionsModal.style.display = "none";
+        }
+    }
+
+    instructionsButton.onclick = () => {
+        instructionsModal.style.display = "block";
+        // instructionsModal.style.backgroundColor = "black";
+        
+        // instructionsButton.style.backgroundColor = "coral";
+    }
 
 });
 
@@ -50,8 +89,7 @@ Some questions:
     do we have to check img.onload()? is there a different way? probs not tbh
 
 REMINDER:
-    ANIMATION IS NOT THE PRIORITY!!!
-    GET OTHER STUFF DONE FIRSTTT!!!
+    - user instructions
 
 Some immediate to-do's
     - game over -> being able to lose

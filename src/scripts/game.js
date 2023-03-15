@@ -113,7 +113,7 @@ class Game {
         
         for (let i = 0; i < this.lives.length; i++) {//
             let life = this.lives[i];
-            life.draw(ctx, Game.DIM_X - 70 - (i * 35), 30);
+            life.draw(ctx, Game.DIM_X - 70 - (i * 40), 30);
         }
         // this.items.forEach(item => item.draw(ctx));
 

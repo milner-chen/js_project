@@ -9,43 +9,152 @@ h1 {
     font-size: 50px;
 }
 
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+.logos {
+    width: fit-content;
+    // margin: 0 auto;
+    position: absolute;
+    // top: -20px;
+    bottom: 15px;
+    right: 15px;
+    img {
+        height: 23px;
+        padding-left: 5px;
+    }
+}
+
 .title {
     margin: 20px;
     text-align: center;
 }
 
-.stats {
+#instructions-button {
+    color: inherit;
+    background-color: inherit;
+    // position: fixed;
     position: absolute;
-    top: 100px;
+    // top: 100px;
+    // right: 275px;
+    top: 15px;
+    right: 15px;
+    // right: -175px;
+    border: 2.5px solid coral;
+    border-radius: 8px;
+    font-weight: bold;
+    // font-weight: bolder;
 }
 
-#game-holder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#lose-modal {
-    display: none;
+#instructions-modal {
+    display: block;
     position: fixed;
     z-index: 1;
-    padding-top: 100;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    overflow: none;
+    background-color: rgba(65, 65, 65, 0.25);
 }
 
-#lose-content {
-    background-color: beige;
-    margin: auto;
+.modal-content {
+    background-color: rgba(245, 245, 220);
+    // background-image: url(/src/assets/cat_sheet.png);
+    width: 40%;
+    height: fit-content;
+    margin: 10% auto;
     padding: 20px;
-    border: 2px solid coral;
-    width: 80%;
+    border: 3.5px solid coral;
+    border-radius: 8px;
+    color: cadetblue;
+    .instructions {
+        padding: 20px 50px;
+        text-align: center;
+        font-size: 30px;
+        .rules {
+            text-align: left;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 3.5px solid coral;
+            width: fit-content;
+            margin: 0 auto;
+            margin-top: 20px;
+            padding: 10px 50px;
+            p {
+                padding: 5px;
+            }
+            span {
+                font-size: 20px;
+            }
+        }
+    }
 }
 
-#lose-button {
-    display: none;
+.close {
+    color: coral;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color:cadetblue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#game-holder {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    position: relative;
+    height: 600px;
+    width: 1000px;
+    margin: auto;
+}
+
+#start-screen {
+    overflow: hidden;
+    background-color: cadetblue;
+        width: 1000px;
+        height: 605px;
+        border: 15px double coral;
+        border-radius: 15px;
+    img {
+        width: 155%;
+        image-rendering: pixelated;
+        // transform: translateY(-600px);
+        transform: translate(15px, -630px);
+    }
+    // background-image: url(/src/assets/cat_sheet.png);
+    // background-size: 160%;
+}
+
+#start-button {
+    // position: absolute;
+    width: 200px;
+    height: 70px;
+    font-size: 40px;
+    font-family: inherit;
+    background-color: beige;
+    font-weight: bolder;
+    color:coral;
+    border-radius: 10px;
+    padding: 0 10px;
+    border: 5px solid coral;
+}
+
+.center-absolute {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
