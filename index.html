@@ -13,14 +13,41 @@
   <body>
     <h1 class="title">Adventures of a Cat Lector</h1>
     <div id="game-holder">
-      <!-- <h1 class="stats">Current Score</h1> -->
+      
+      <!-- starting screen -->
+      <div id="start-screen" class="center-absolute">
+        <img src="src/assets/cat_sheet.png" alt="">
+      </div>
+      <div>
+        <button id="start-button" class="center-absolute">Start Game</button>
+      </div>
+      <!-- maybe add div with background stuff + have it display none when button is pressed as well -->
       <canvas id="game-canvas"></canvas>
-      <!-- <button id="lose-button"></button>
-      <div id="lose-modal">
-        <div id="lose-content">
-          <p>You lost you loser</p>
+      
+      <!-- user instructions modal -->
+      <button id="instructions-button">?</button>
+      <div id="instructions-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="instructions">
+            <h1>Help your neighborhood cat, Lector, in completing his chores!</h1>
+            <!-- <h2>Instructions:</h2> -->
+            <div class="rules">
+              <p>1. Collect the items on his to-do list.</p>
+              <p>2. Collect in order! <span>(Lector is a strange cat)</span></p>
+              <p>3. Lector will lose a heart if you don't.</p>
+              <p>4. He only has 3 hearts so be careful.</p>
+              <p>5. Empty the list before time runs out!</p>
+              <p>6. Move using the arrow keys <span>(left, right, up)</span>.</p>
+            </div>
+          </div>
         </div>
-      </div> -->
+      </div>
+
+      <div class="logos">
+        <img src="src/assets/github-mark-white.png" alt="">
+        <img src="src/assets/LI-In-Bug.png" alt="">
+      </div>
     </div>
   </body>
 
