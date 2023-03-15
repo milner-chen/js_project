@@ -33,15 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.imageSmoothingEnabled = false;
     window.ctx = ctx;
 
-    const game = new Game();
-    new GameView(game, ctx).start();
-
-    // const loseButton = getElementById("lose-button");
-    // const loseModal = getElementById("lose-modal");
-
-    // loseButton.onclick = () => {
-    //     loseModal.style.display = "block";
-    // }
+    // const game = new Game();
+    // ctx.clearRect(0, 0, 1000, 600);
+    // ctx.fillStyle = "#921208";
+    // ctx.roundRect(this.pos[0], this.pos[1], listWidth, this.height, 5);
+    // ctx.fill();
+    // ctx.beginPath();
+    // ctx.drawImage(Game.BG, 0, 0, Game.DIM_X, Game.DIM_Y);
+    
+    const startButton = document.getElementById("start-button");
+    startButton.addEventListener("click", () => {
+        new GameView(game, ctx).start();
+        startButton.style.display = "none";
+    });
 
 });
 
@@ -50,8 +54,7 @@ Some questions:
     do we have to check img.onload()? is there a different way? probs not tbh
 
 REMINDER:
-    ANIMATION IS NOT THE PRIORITY!!!
-    GET OTHER STUFF DONE FIRSTTT!!!
+    - user instructions
 
 Some immediate to-do's
     - game over -> being able to lose
