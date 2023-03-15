@@ -5,6 +5,7 @@ import Item from "./item";
 import Border from "./border";
 import TaskList from "./task_list";
 import Life from "./life";
+import Sprite from "../sprite";
 
 // this is where we will load other elements of the game
 // this will also hold the game logic
@@ -16,7 +17,9 @@ class Game {
         // create bg here
         Game.BG.src = "src/assets/bg_1.png";
         // should have a player
+        // debugger;
         this.player = new Player([0, 400]);
+        // console.log("player created at:", this.player.pos);
         window.player = this.player;
         // should have platforms -> arr
         this.platforms = [
@@ -43,6 +46,7 @@ class Game {
         // this.list = ["jam", "bread"];
         
         this.items = [
+            // new Item("strawberrycake", [500, 570]), // testing purposes
             new Item("bread", [170, 405 - 25]),
             new Item("jam", [350, 250]),
             new Item("dumplings", [400, 400]),
@@ -64,6 +68,15 @@ class Game {
             new Life(),
             new Life()
         ];
+
+
+        // this.sprite = new Sprite();
+
+        this.frame = 0;
+        this.frameCount = 0;
+
+        this.lose = false;
+        this.win = false;
     }
 
     // createPlatforms() {
@@ -126,15 +139,15 @@ class Game {
                     this.score += 100;
                     // console.log(this.tasklist.found); // could draw a line throught the ones already found
                 } else {
-                    if (!obj.collision) {
+                    if (!obj.collision) { // if it isn't already colliding
                         this.lives.pop();
-
+                        // this.player.pos[0] - 5;
                         obj.collision = true;
                         setTimeout(() => {
-                            console.log("testing timeout");
+                            // console.log("testing timeout");
                             obj.collision = false;
-                        }, 500);
-                            console.log(obj.collision);
+                        }, 2000);
+                            // console.log(obj.collision);
                     }
                         // if (obj.count === 0) { obj.count = 19; }
                     // debugger;
@@ -155,9 +168,33 @@ class Game {
             }
             obj.count -= 1;
             if (obj.count === 0) obj.count = 19;
+
+            
+            if (this.lives.length === 0) {
+                setTimeout(() => {
+                    this.lose = true;
+                }, 10);         
+            }
+            // console.log(this.items);
+            if (this.items.length === 0) {
+                // console.log("the list is empty");
+                setTimeout(() => {
+                    this.win = true;
+                }, 25); 
+            }
         }
         
-        this.player.draw(ctx, 5, 5);
+
+        
+        // starting animation logic
+        // if (this.player.left && this.player.yVelocity === 0) {
+        //     this.player.drawSprite(ctx, this.player.img[0], 2, 1)
+        // }
+
+
+
+
+        // this.player.draw(ctx, 5, 5);
         
         // let cat = new Border(this.player);
         // cat.draw(ctx);
@@ -165,7 +202,17 @@ class Game {
         // console.log(cat);
         // ctx.font = "30px serif";
         // ctx.fillText("current score", 400, 50);
-        
+
+        this.player.drawSprite(ctx, this.player.img[0], this.frame);
+        // console.log("action row: ", this.player.row);
+        // console.log("frame col: ", this.frame);
+        if (this.frameCount >= this.player.frameSpeed) {
+            this.frame++;
+            if (this.frame > this.player.maxFrames) this.frame = 0;
+            this.frameCount = 0;
+        }
+        this.frameCount++;
+
     }
 
     moveObjects() {
@@ -178,10 +225,10 @@ class Game {
     // for items
     // not enough clarity about the type of collision for later
     hasCollison(rect1, rect2) {
-        if (!(rect1.pos[0] > rect2.pos[0] + (rect2.width) || // x start of 1 after end of 2
-            rect1.pos[0] + (rect1.width) < rect2.pos[0] || // x end of 1 before start of 2
-            rect1.pos[1] > rect2.pos[1] + (rect2.height) || // y top of 1 below bottom of 2
-            rect1.pos[1] + (rect2.height) < rect2.pos[1] // y bottom of 1 above top of 2
+        if (!(rect1.pos[0] + (rect1.width * .3) > rect2.pos[0] + (rect2.width) || // x start of 1 after end of 2
+            rect1.pos[0] + (rect1.width * .65) < rect2.pos[0] || // x end of 1 before start of 2
+            rect1.pos[1] + (rect1.height * .7) > rect2.pos[1] + (rect2.height) || // y top of 1 below bottom of 2
+            rect1.pos[1] + (rect1.height) < rect2.pos[1] // y bottom of 1 above top of 2
         )) { // collision found
             return true;
         } else { // collision not found

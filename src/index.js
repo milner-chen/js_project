@@ -1,5 +1,8 @@
 console.log("webpack is fine");
 
+import Sprite from "./sprite";
+window.Sprite = Sprite;
+
 import Border from "./scripts/border";
 window.Border = Border;
 
@@ -33,6 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const game = new Game();
     new GameView(game, ctx).start();
 
+    // const loseButton = getElementById("lose-button");
+    // const loseModal = getElementById("lose-modal");
+
+    // loseButton.onclick = () => {
+    //     loseModal.style.display = "block";
+    // }
+
 });
 
 /*
@@ -44,21 +54,21 @@ REMINDER:
     GET OTHER STUFF DONE FIRSTTT!!!
 
 Some immediate to-do's
-    - some game logic
-        - add lives -> where should i put this logic? fr...
-        - timer?
+    - game over -> being able to lose
+    - user instructions
     
 
 A little less immediate to-do's
+    Maybe a direction flag:
+        - this.left sets to left
+        - this.right sets to right
+        - add flag as a condition + not left and not right
 
     The entire map is hardcoded at the moment
         - idk how you are going to expand this...
         - more levels?
 
     General to be fixed stuff:
-    - task list moves
-        - console log the pos, width, and length
-    - remove the border on the platforms
 
 More far off, but important stuff that you cannot for get:
     - user instructions
