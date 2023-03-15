@@ -9,16 +9,18 @@ class GameView {
     constructor(game, ctx) {
         this.game = game;
         this.ctx = ctx;
+        this.timer = 91;
         // this.startTime = 60;
         // this.step = 0;
-        this.timer = 91;
         // this.timer = 5;
         this.count = 0;
         // this.sprite = new Sprite();
         this.frame = 0;
         this.frameCount = 0;
-
+        // this.running = false;
         this.animationFunc;
+        let timestampStart = null;
+        let lastTimestamp = null;
     }
 
     printTimer(start) {
@@ -34,14 +36,20 @@ class GameView {
 
 
     animate(timeStamp) {
-        this.animationFunc = undefined;
-        this.count = timeStamp / 1000;
+        if (!this.timestampStart) {
+            this.timestampStart = timeStamp;
+        }
+        let timeSinceStart = timeStamp - this.timestampStart;
+
+        this.count = timeSinceStart / 1000;
+        // if (this.running) this.count = timeStamp / 1000;
+        // this.count += 1/1000;
         const player = this.game.player;
         const objects = this.game.platforms;
-        // const 
-
-        
-        
+        // const
+        // console.log(timeStamp);
+        console.log(this.timer - this.count);
+        console.log(this.count);
         
         this.game.moveObjects();
         this.game.draw(this.ctx);
@@ -74,19 +82,6 @@ class GameView {
                 player.xVelocity = 0;
             }
         })
-        
-        // console.log(this.game.lives);
-        // if (this.game.lives.length === 0) {
-            // console.log("this statment is being reached");
-            // console.log(this.animationFunc);
-            // cancelAnimationFrame(this.animationFunc);
-            // this.animationFunc = requestAnimationFrame(this.animate.bind(this));
-        // }
-        // console.log(player.pos);
-        // console.log(player.width);
-        // console.log(Math.floor(this.timer - this.count));
-
-
 
         // WORKING END GAME LOGIC RIGHT HERE
         if (Math.floor(this.timer - this.count) !== 0 && !this.game.lose && !this.game.win) {
@@ -137,6 +132,7 @@ class GameView {
     }
 
     start() {
+        // console.log(this.running);
         this.game.player.bindKeys();
         // this.originTime = performance.timeOrigin;
         // debugger;
@@ -147,8 +143,9 @@ class GameView {
             // this.game.moveObjects();
         // }, 1);
         //get animation frame
-        // requestAnimationFrame(this.animate.bind(this));
-        this.animationFunc = requestAnimationFrame(this.animate.bind(this));
+        // if (this.running) 
+        requestAnimationFrame(this.animate.bind(this));
+        // this.animationFunc = requestAnimationFrame(this.animate.bind(this));
 
     }
 }

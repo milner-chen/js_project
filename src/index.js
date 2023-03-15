@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.imageSmoothingEnabled = false;
     window.ctx = ctx;
 
-    // const game = new Game();
     // ctx.clearRect(0, 0, 1000, 600);
     // ctx.fillStyle = "#921208";
     // ctx.roundRect(this.pos[0], this.pos[1], listWidth, this.height, 5);
@@ -43,9 +42,42 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const startButton = document.getElementById("start-button");
     startButton.addEventListener("click", () => {
-        new GameView(game, ctx).start();
+        console.log("start button has been clicked");
+        const game = new Game();
+        // console.log(game.running);
+        // game.running = true;
+        console.log(game.running);
+        const gameView = new GameView(game, ctx);
+        console.log(gameView);
+        // gameView.running = true;
+        gameView.start();
+        console.log(gameView.count);
+        // this.count = timeStamp / 1000;
+        // game.count = 0;
         startButton.style.display = "none";
     });
+
+    const instructionsModal = document.getElementById("instructions-modal");
+    const instructionsButton = document.getElementById("instructions-button");
+    const close = document.getElementsByClassName("close")[0];
+
+    close.onclick = () => {
+        instructionsModal.style.display = "none";
+    }
+
+    window.onclick = (event) => {
+        if (event.target === instructionsModal) {
+
+            instructionsModal.style.display = "none";
+        }
+    }
+
+    instructionsButton.onclick = () => {
+        instructionsModal.style.display = "block";
+        // instructionsModal.style.backgroundColor = "black";
+        
+        // instructionsButton.style.backgroundColor = "coral";
+    }
 
 });
 
