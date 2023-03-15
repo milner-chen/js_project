@@ -50,10 +50,10 @@ class Game {
             new Item("bread", [170, 405 - 25]),
             new Item("jam", [350, 250]),
             new Item("dumplings", [400, 400]),
-            new Item("egg", [900, 300]),
-            new Item("jelly", [600, 340]),
-            new Item("pancakes", [500, 150]),
-            new Item("strawberrycake", [760, 60]),
+            // new Item("egg", [900, 300]),
+            // new Item("jelly", [600, 340]),
+            // new Item("pancakes", [500, 150]),
+            // new Item("strawberrycake", [760, 60]),
         ];
         
         this.tasklist = new TaskList(this.items);
@@ -113,7 +113,7 @@ class Game {
         
         for (let i = 0; i < this.lives.length; i++) {//
             let life = this.lives[i];
-            life.draw(ctx, Game.DIM_X - 70 - (i * 35), 30);
+            life.draw(ctx, Game.DIM_X - 70 - (i * 40), 30);
         }
         // this.items.forEach(item => item.draw(ctx));
 

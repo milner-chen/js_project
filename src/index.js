@@ -41,20 +41,23 @@ document.addEventListener("DOMContentLoaded", () => {
     // ctx.drawImage(Game.BG, 0, 0, Game.DIM_X, Game.DIM_Y);
     
     const startButton = document.getElementById("start-button");
+    const startScreen = document.getElementById("start-screen");
     startButton.addEventListener("click", () => {
         console.log("start button has been clicked");
         const game = new Game();
         // console.log(game.running);
         // game.running = true;
-        console.log(game.running);
+        // console.log(game.running);
         const gameView = new GameView(game, ctx);
-        console.log(gameView);
+        // console.log(gameView);
         // gameView.running = true;
         gameView.start();
-        console.log(gameView.count);
+        // console.log(gameView.count);
         // this.count = timeStamp / 1000;
         // game.count = 0;
         startButton.style.display = "none";
+        startScreen.style.display = "none";
+
     });
 
     const instructionsModal = document.getElementById("instructions-modal");

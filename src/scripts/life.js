@@ -6,7 +6,7 @@ class Life {
         this.sy = 0;
         this.width = 50;
         this.height = 50;
-        this.scale = 2.5;
+        this.scale = 2.75;
     }
 
     draw(ctx, dx, dy) {

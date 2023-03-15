@@ -17,6 +17,19 @@ h3 {
     font-size: 30px;
 }
 
+.logos {
+    width: fit-content;
+    // margin: 0 auto;
+    position: absolute;
+    // top: -20px;
+    bottom: 15px;
+    right: 15px;
+    img {
+        height: 23px;
+        padding-left: 5px;
+    }
+}
+
 .title {
     margin: 20px;
     text-align: center;
@@ -29,8 +42,8 @@ h3 {
     position: absolute;
     // top: 100px;
     // right: 275px;
-    top: 25px;
-    right: 25px;
+    top: 15px;
+    right: 15px;
     // right: -175px;
     border: 2.5px solid coral;
     border-radius: 8px;
@@ -47,11 +60,12 @@ h3 {
     width: 100%;
     height: 100%;
     overflow: none;
-    background-color: rgba(65, 65, 65, 0.4);
+    background-color: rgba(65, 65, 65, 0.25);
 }
 
 .modal-content {
-    background-color: beige;
+    background-color: rgba(245, 245, 220);
+    // background-image: url(/src/assets/cat_sheet.png);
     width: 50%;
     height: fit-content;
     margin: 10% auto;
@@ -105,10 +119,27 @@ h3 {
     margin: auto;
 }
 
+#start-screen {
+    overflow: hidden;
+    background-color: cadetblue;
+        width: 1000px;
+        height: 605px;
+        border: 15px double coral;
+        border-radius: 15px;
+    img {
+        width: 155%;
+        image-rendering: pixelated;
+        // transform: translateY(-600px);
+        transform: translate(15px, -630px);
+    }
+    // background-image: url(/src/assets/cat_sheet.png);
+    // background-size: 160%;
+}
+
 #start-button {
-    // display: none;
-    // width: 200px;
-    position: absolute;
+    // position: absolute;
+    width: 200px;
+    height: 70px;
     font-size: 40px;
     font-family: inherit;
     background-color: beige;
@@ -117,4 +148,13 @@ h3 {
     border-radius: 10px;
     padding: 0 10px;
     border: 5px solid coral;
+}
+
+.center-absolute {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }

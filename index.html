@@ -12,12 +12,19 @@
 
   <body>
     <h1 class="title">Adventures of a Cat Lector</h1>
-
-    <!-- user instructions modal -->
-    
-    
     <div id="game-holder">
       
+      <!-- starting screen -->
+      <div id="start-screen" class="center-absolute">
+        <img src="src/assets/cat_sheet.png" alt="">
+      </div>
+      <div>
+        <button id="start-button" class="center-absolute">Start Game</button>
+      </div>
+      <!-- maybe add div with background stuff + have it display none when button is pressed as well -->
+      <canvas id="game-canvas"></canvas>
+      
+      <!-- user instructions modal -->
       <button id="instructions-button">?</button>
       <div id="instructions-modal" class="modal">
         <div class="modal-content">
@@ -29,19 +36,18 @@
               <p>1. Collect the items on his to-do list.</p>
               <p>2. Collect in order! <span>(Lector is a strange cat)</span></p>
               <p>3. Lector will lose a heart if you don't.</p>
-              <p>4. You only have 3 hearts.</p>
+              <p>4. He only has 3 hearts so be careful.</p>
               <p>5. Empty the list before time runs out!</p>
-              <p>6. Move using the arrow keys.</p>
+              <p>6. Move using the arrow keys <span>(left, right, up)</span>.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- starting screen -->
-      <button id="start-button">Start Game</button>
-      <!-- maybe add div with background stuff + have it display none when button is pressed as well -->
-      <canvas id="game-canvas"></canvas>
-
+      <div class="logos">
+        <img src="src/assets/github-mark-white.png" alt="">
+        <img src="src/assets/LI-In-Bug.png" alt="">
+      </div>
     </div>
   </body>
 
