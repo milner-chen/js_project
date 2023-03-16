@@ -1,21 +1,12 @@
 import Game from "./game";
 
-console.log("player class is working");
 class Player {
-    // class variables
-    // static keys = {};
     static IMG = new Image();
     static CWIDTH = 1000;
     static CHEIGHT = 600;
     constructor(pos) {
         Player.IMG.src = "src/assets/cat.png";
-        // this.IMG = IMG;
         this.pos = pos;
-        // this.xdim = 23; // dimensions of the actual image
-        // this.ydim = 23;
-        // this.width = this.xdim * 1.5; //scaled size
-        // this.height = this.ydim * 1.5;
-        //  new additions
         this.xVelocity = 0;
         this.yVelocity = 0;
         this.jumping = false;
@@ -25,8 +16,6 @@ class Player {
         this.left = false;
         this.right = false;
 
-        // testing sprite animation
-        // this.frame = 0;
         this.xdim = 32;
         this.ydim = 32;
         this.scale = 3;
@@ -35,7 +24,6 @@ class Player {
         this.row = 0;
         this.img = [new Image(), new Image()];
         this.img[0].src = "src/assets/cat_sheet.png";
-        // this.img[1].src = "src/assets/cat_sheet_rev.png";
         this.maxFrames = 1;
         this.frameSpeed = 15;
         this.direction = "right";
@@ -92,9 +80,6 @@ class Player {
                 this.direction = "right";
                 // this.row = 5;
             }
-            // console.log("up", this.up);
-            // console.log("left", this.left);
-            // console.log("right", this.right);
         })
         window.addEventListener("keyup", event => {
             // keys[event.key] = false;
@@ -110,9 +95,6 @@ class Player {
                 this.right = false;
                 // this.xVelocity = 0;
             }
-            // console.log("up", this.up);
-            // console.log("left", this.left);
-            // console.log("right", this.right);
         })
     }
 

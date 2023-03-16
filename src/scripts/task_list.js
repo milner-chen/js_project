@@ -11,11 +11,7 @@ class TaskList {
     }
 
     generateList() {
-        // while (this.list.length < this.allItems.length) {
-            
-        // }
-        
-        // hardcoding...
+        // items are not dynamic atm
         return this.list = this.allItems;
     }
 

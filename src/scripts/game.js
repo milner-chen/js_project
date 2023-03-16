@@ -1,14 +1,9 @@
-console.log("webpack is doing well, from game")
 import Player from "./player";
 import Platform from "./platform";
 import Item from "./item";
-import Border from "./border";
 import TaskList from "./task_list";
 import Life from "./life";
-import Sprite from "../sprite";
 
-// this is where we will load other elements of the game
-// this will also hold the game logic
 class Game {
     static DIM_X = 1000;
     static DIM_Y = 600;
@@ -19,7 +14,6 @@ class Game {
         // should have a player
         // debugger;
         this.player = new Player([0, 400]);
-        // console.log("player created at:", this.player.pos);
         window.player = this.player;
         // should have platforms -> arr
         this.platforms = [
@@ -38,15 +32,10 @@ class Game {
             new Platform([779, 185], 150, 20),
             new Platform([854, 355], 100, 20)
         ];
-        // should have items -> arr
-        // this.createPlatforms();
-        // console.log(this.platforms);
 
         this.found = [];
-        // this.list = ["jam", "bread"];
         
         this.items = [
-            // new Item("strawberrycake", [500, 570]), // testing purposes
             new Item("bread", [170, 405 - 25]),
             new Item("jam", [350, 250]),
             new Item("dumplings", [400, 400]),
@@ -58,9 +47,6 @@ class Game {
         
         this.tasklist = new TaskList(this.items);
 
-        // this.allObjects = this.platforms.concat(this.items);
-        // console.log(this.allObjects);
-
         this.score = 0;
 
         this.lives = [
@@ -68,9 +54,6 @@ class Game {
             new Life(),
             new Life()
         ];
-
-
-        // this.sprite = new Sprite();
 
         this.frame = 0;
         this.frameCount = 0;
@@ -161,7 +144,6 @@ class Game {
                     // debugger;
                     // handle what to do if collision
 
-                    // just shove the player away...
                     // this.player.pos[0] += obj.width;
                     // this.player.xVelocity *= 0.5;
                     // this.player.pos[1] += obj.height;
@@ -192,18 +174,6 @@ class Game {
             }
         }
         
-
-        
-        // starting animation logic
-        // if (this.player.left && this.player.yVelocity === 0) {
-        //     this.player.drawSprite(ctx, this.player.img[0], 2, 1)
-        // }
-
-
-
-
-        // this.player.draw(ctx, 5, 5);
-        
         // let cat = new Border(this.player);
         // cat.draw(ctx);
         // window.cat = cat;
@@ -224,14 +194,12 @@ class Game {
     }
 
     moveObjects() {
-        // debugger;
         this.player.move();
         // console.log(this.player.pos);
         // this.collideObjects(this.player);
     }
 
-    // for items
-    // not enough clarity about the type of collision for later
+    // collision detection for items
     hasCollison(rect1, rect2) {
         if (!(rect1.pos[0] + (rect1.width * .3) > rect2.pos[0] + (rect2.width) || // x start of 1 after end of 2
             rect1.pos[0] + (rect1.width * .65) < rect2.pos[0] || // x end of 1 before start of 2
@@ -243,11 +211,6 @@ class Game {
             return false;
         }
     }
-
-    // collisionType(pos1, pos2) {
-    //     if (pos1[0] > pos2[0] ) return ""
-    // }
-
     
 }
 

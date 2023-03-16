@@ -5,7 +5,6 @@
 
 # Description
 [Cat-Lector](https://milner-chen.github.io/js_project/) is a game where you help a cat with its errands by collecting everything on it's to-do list. However, this cat is very peculiar so you must gather these items in the order listed. You will navigate through platforms with arrow keys and collect items when you come into contact with them. If you collect items out of order, you will lose a life. If collected properly, you will gain points. The game ends when time is up or when you lose all your lives.
-<!-- There are also perils out in the wild so be careful when foraging! -->
 
 # Wireframe
 ![wireframe](./js_project_wireframe.png)
@@ -29,42 +28,32 @@
   - See their current score and time
   ## In addition, this project includes:
   - User instructions in a modal on the initial screen
-  <!-- - There are obstacles to overcome -->
+
+## Collision Detection
+Collection of items is determined by rectangular collision detection. Check for when two objects are not overlapping on all four sides with the objects' position and dimensions. When any of these conditions are false, there is an overlap and a collision has occured. Manual adjustments were made because the dimensions of the sprites did not closely fit the actual size of the image.
+  ```javascript
+    hasCollison(rect1, rect2) {
+        if (!(rect1.pos[0] + (rect1.width * .3) > rect2.pos[0] + (rect2.width) ||
+            rect1.pos[0] + (rect1.width * .65) < rect2.pos[0] ||
+            rect1.pos[1] + (rect1.height * .7) > rect2.pos[1] + (rect2.height) ||
+            rect1.pos[1] + (rect1.height) < rect2.pos[1]
+        )) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+  ```
+
  
 # Implementation Timeline
 
 - Friday Afternoon & Weekend: Research on Canvas API, rendering and animation, and collision detection. Setup basic project structure. Render and move character with key-bindings. Implement collision detection with platforms.
 - Monday: Work on screen boundaries, implementing gravity and velocity, and collision detection with items.
 - Tuesday: Render hearts, removing hearts upon a collision. Render and update score, timer, and to-do list.
-- Wednesday: Animate character sprites. Implement game over logic, game start and restart. Add user instructions, and links.
+- Wednesday: Animate character sprites. Implement game over logic, game start and game restart. Add user instructions and links.
 - Thursday: Add sound effects, styling, and final touches. Deploy to GitHub pages.
 
-<!-- - Research
-- Setup project
-- Set up classes
-- Get the character moving
-
-## Monday:
-
-- Implement the game logic
-- Make sure that the character can interact with items (collision)
-- Make sure that stats. (points, lives, etc) update properly
-
-## Tuesday:
-
-- Make sure that the task list updates properly
-- Make sure that the stats render correctly
-
-## Wednesday:
-
-- Add the timer
-- Styling
-- Start bonuses if there is time
-
-## Thursday Morning:
-
-- Deploy to GitHub pages -->
-
 # Future Implementations
-  - Add side scrolling functionality
-  - Gernerate multiple task lists
+  - Randomize map and items
+  - Have multiple levels

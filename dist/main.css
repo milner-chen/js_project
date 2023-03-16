@@ -221,7 +221,6 @@ h3 {
 
 #restart {
   display: none;
-  z-index: 1;
   top: auto;
   font-size: 30px;
   bottom: 108px;

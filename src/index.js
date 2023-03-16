@@ -1,5 +1,3 @@
-console.log("webpack is fine");
-
 import Sprite from "./sprite";
 window.Sprite = Sprite;
 
@@ -18,12 +16,7 @@ window.Game = Game;
 import GameView from "./scripts/game_view";
 window.GameView = GameView;
 
-// import Example from "./scripts/example";
-// const width = 800;
-// const height = 600;
-
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Hello World!");
     const canvas = document.getElementById("game-canvas");
     window.canvas = canvas;
     canvas.width = Game.DIM_X;
@@ -43,18 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const startButton = document.getElementById("start-button");
     const startScreen = document.getElementById("start-screen");
     startButton.addEventListener("click", () => {
-        console.log("start button has been clicked");
         const game = new Game();
-        // console.log(game.running);
-        // game.running = true;
-        // console.log(game.running);
         const gameView = new GameView(game, ctx);
-        // console.log(gameView);
-        // gameView.running = true;
         gameView.start();
-        // console.log(gameView.count);
-        // this.count = timeStamp / 1000;
-        // game.count = 0;
         startButton.style.display = "none";
         startScreen.style.display = "none";
 
@@ -104,14 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     muteButton.onclick = () => {
         if (muteButton.innerText === "Sound On") {
-            console.log("mute off");
             muteButton.innerText = "Sound Off";
             
             wrongEffect.muted = false;
             rightEffect.muted = false;
             jumpEffect.muted = false;
         } else if (muteButton.innerText === "Sound Off") {
-            console.log("mute on");
             muteButton.innerText = "Sound On"
             
             wrongEffect.muted = true;
@@ -119,50 +101,5 @@ document.addEventListener("DOMContentLoaded", () => {
             jumpEffect.muted = true;
         }
     }
-    
-    // if (muteButton.innerText === "Sound On") {
-    //     console.log("mute off");
-    //     // this.mute = false;
-    //     wrongEffect.muted = "true";
-    //     rightEffect.muted = "true";
-    //     jumpEffect.muted = "true";
-    // }
-    // if (muteButton.innerText === "Sound Off") {
-    //     console.log("mute on");
-    //     wrongEffect.muted = "false";
-    //     rightEffect.muted = "false";
-    //     jumpEffect.muted = "false";
-    // }
+
 });
-
-/*
-Some questions:
-    do we have to check img.onload()? is there a different way? probs not tbh
-
-REMINDER:
-    - user instructions
-
-Some immediate to-do's
-    - game over -> being able to lose
-    - user instructions
-    
-
-A little less immediate to-do's
-    Maybe a direction flag:
-        - this.left sets to left
-        - this.right sets to right
-        - add flag as a condition + not left and not right
-
-    The entire map is hardcoded at the moment
-        - idk how you are going to expand this...
-        - more levels?
-
-    General to be fixed stuff:
-
-More far off, but important stuff that you cannot for get:
-    - user instructions
-    - game over screen
-    - music??
-    all rather scattered + far off stuff
-    - scrolling...
-*/
