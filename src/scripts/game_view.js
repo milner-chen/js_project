@@ -116,8 +116,17 @@ class GameView {
         ctx.fillText(mes, 500, 200);
         ctx.font = "50px Cute Font";
         ctx.fillText("Score: " + this.game.score, 500, 300);
-        ctx.fillText("Time: " + this.printTimer(this.timer - this.count), 500, 350);
+        ctx.fillText("Time Left: " + this.printTimer(this.timer - this.count), 500, 350);
         ctx.fillText("Lives Left: " + this.game.lives.length, 500, 400);
+
+        const restart = document.getElementById("restart");
+        restart.style.display = "block";
+
+        // const again = document.getElementById("start-screen");
+        // const againButton = document.getElementById("start-button");
+        // again.style.display = "block";
+        // againButton.style.display = "block";
+        
     }
 
     start() {

@@ -82,6 +82,18 @@ document.addEventListener("DOMContentLoaded", () => {
         // instructionsButton.style.backgroundColor = "coral";
     }
 
+    const restart = document.getElementById("restart");
+    restart.onclick = () => {
+        const again = document.getElementById("start-screen");
+        const againButton = document.getElementById("start-button");
+        // const instructionsButton = document.getElementById("instructions-button");
+        // instructionsButton.style.display = "none";
+        again.style.display = "block";
+        againButton.style.display = "block";
+        restart.style.display = "none";
+        
+    }
+
 });
 
 /*
