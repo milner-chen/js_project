@@ -6,16 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
     <script src="./dist/main.js"></script>
-    <title>Cat Lector</title>
+    <title>Cat-Lector</title>
     <link rel="shortcut icon" type="image/x-icon" href="src/assets/cat.png">
   </head>
 
   <body>
-    <h1 class="title">Adventures of a Cat Lector</h1>
+    <h1 class="title">Adventures of a Cat-Lector</h1>
 
     <!-- tentative audoio -->
     <audio id="wrongEffect" src="src/assets/wrong.wav"></audio>
     <audio id="rightEffect" src="src/assets/bubble.wav"></audio>
+    <audio id="jumpEffect" src="src/assets/jump.wav"></audio>
 
     <div id="game-holder">
       
@@ -29,6 +30,7 @@
       <!-- maybe add div with background stuff + have it display none when button is pressed as well -->
       <canvas id="game-canvas"></canvas>
       
+      <p id="mute-button">Sound On</p>
       <!-- user instructions modal -->
       <button id="instructions-button">?</button>
       <div id="instructions-modal" class="modal">

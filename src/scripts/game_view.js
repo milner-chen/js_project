@@ -74,7 +74,7 @@ class GameView {
         objects.forEach(obj => {
             if (player.pos[1] + player.height <= obj.pos[1]
                 && player.pos[1] + player.height + player.yVelocity >= obj.pos[1]
-                && player.pos[0] + (player.width * .725) >= obj.pos[0]
+                && player.pos[0] + (player.width * .75) >= obj.pos[0]
                 && player.pos[0] + (player.width / 2) <= obj.pos[0] + obj.width) {
                 player.yVelocity = 0;
                 player.xVelocity = 0;
