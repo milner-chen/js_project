@@ -182,7 +182,7 @@ h3 {
   transform: translate(15px, -630px);
 }
 
-#start-button {
+.buttons {
   width: 200px;
   height: 70px;
   font-size: 40px;
@@ -202,4 +202,14 @@ h3 {
   top: 0;
   bottom: 0;
   margin: auto;
+}
+
+#restart {
+  display: none;
+  z-index: 1;
+  top: auto;
+  font-size: 30px;
+  bottom: 108px;
+  width: 150px;
+  height: 50px;
 }
