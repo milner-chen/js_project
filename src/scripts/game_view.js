@@ -74,7 +74,7 @@ class GameView {
         objects.forEach(obj => {
             if (player.pos[1] + player.height <= obj.pos[1]
                 && player.pos[1] + player.height + player.yVelocity >= obj.pos[1]
-                && player.pos[0] + (player.width * .725) >= obj.pos[0]
+                && player.pos[0] + (player.width * .75) >= obj.pos[0]
                 && player.pos[0] + (player.width / 2) <= obj.pos[0] + obj.width) {
                 player.yVelocity = 0;
                 player.xVelocity = 0;
@@ -116,8 +116,17 @@ class GameView {
         ctx.fillText(mes, 500, 200);
         ctx.font = "50px Cute Font";
         ctx.fillText("Score: " + this.game.score, 500, 300);
-        ctx.fillText("Time: " + this.printTimer(this.timer - this.count), 500, 350);
+        ctx.fillText("Time Left: " + this.printTimer(this.timer - this.count), 500, 350);
         ctx.fillText("Lives Left: " + this.game.lives.length, 500, 400);
+
+        const restart = document.getElementById("restart");
+        restart.style.display = "block";
+
+        // const again = document.getElementById("start-screen");
+        // const againButton = document.getElementById("start-button");
+        // again.style.display = "block";
+        // againButton.style.display = "block";
+        
     }
 
     start() {

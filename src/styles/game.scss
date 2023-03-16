@@ -27,12 +27,28 @@ h3 {
     img {
         height: 23px;
         padding-left: 5px;
+        color: cadetblue;
     }
 }
 
 .title {
     margin: 20px;
     text-align: center;
+}
+
+#mute-button {
+    color: inherit;
+    // background-color: rgba(245, 245, 220, 0.2);
+    font-size: inherit;
+    background-color: inherit;
+    position: absolute;
+    top: 15px;
+    right: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0px 5px;
+    border: 2.5px solid coral;
+    border-radius: 8px;
 }
 
 #instructions-button {
@@ -136,7 +152,7 @@ h3 {
     // background-size: 160%;
 }
 
-#start-button {
+.buttons {
     // position: absolute;
     width: 200px;
     height: 70px;
@@ -157,4 +173,16 @@ h3 {
     top: 0;
     bottom: 0;
     margin: auto;
+}
+
+#restart {
+    // position: relative;
+    // display: block;
+    display: none;
+    z-index: 1;
+    top: auto;
+    font-size: 30px;
+    bottom: 108px;
+    width: 150px;
+    height: 50px;
 }
