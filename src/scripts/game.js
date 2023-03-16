@@ -135,6 +135,8 @@ class Game {
                 if (this.tasklist.isNextItem(obj)) {
                     // collsion = true;
                     // this.found.push(this.items.splice(i, 1));
+                    const rightEffect = document.getElementById("rightEffect");
+                    rightEffect.play();
                     this.found.push(this.items.shift());
                     this.score += 100;
                     // console.log(this.tasklist.found); // could draw a line throught the ones already found
@@ -142,6 +144,8 @@ class Game {
                     if (!obj.collision) { // if it isn't already colliding
                         this.lives.pop();
                         // this.player.pos[0] - 5;
+                        const wrongEffect = document.getElementById("wrongEffect");
+                        wrongEffect.play();
                         obj.collision = true;
                         setTimeout(() => {
                             // console.log("testing timeout");
