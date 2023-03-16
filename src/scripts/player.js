@@ -75,8 +75,9 @@ class Player {
                 if (this.yVelocity == 0) {
                     this.yVelocity -= 10;
                     // this.row = 19;
-            const jumpEffect = document.getElementById("jumpEffect");
-            jumpEffect.play();
+            
+                    const jumpEffect = document.getElementById("jumpEffect");
+                    jumpEffect.play();
                 }
                 this.jumping = true;
                 // this.row = 20;

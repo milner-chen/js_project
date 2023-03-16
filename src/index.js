@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const ctx = canvas.getContext("2d");
     ctx.imageSmoothingEnabled = false;
     window.ctx = ctx;
-
+    
     // ctx.clearRect(0, 0, 1000, 600);
     // ctx.fillStyle = "#921208";
     // ctx.roundRect(this.pos[0], this.pos[1], listWidth, this.height, 5);
@@ -94,6 +94,45 @@ document.addEventListener("DOMContentLoaded", () => {
         
     }
 
+    
+    const muteButton = document.getElementById("mute-button");
+    const wrongEffect = document.getElementById("wrongEffect");
+    const rightEffect = document.getElementById("rightEffect");
+    const jumpEffect = document.getElementById("jumpEffect");
+
+    
+    
+    muteButton.onclick = () => {
+        if (muteButton.innerText === "Sound On") {
+            console.log("mute off");
+            muteButton.innerText = "Sound Off";
+            
+            wrongEffect.muted = false;
+            rightEffect.muted = false;
+            jumpEffect.muted = false;
+        } else if (muteButton.innerText === "Sound Off") {
+            console.log("mute on");
+            muteButton.innerText = "Sound On"
+            
+            wrongEffect.muted = true;
+            rightEffect.muted = true;
+            jumpEffect.muted = true;
+        }
+    }
+    
+    // if (muteButton.innerText === "Sound On") {
+    //     console.log("mute off");
+    //     // this.mute = false;
+    //     wrongEffect.muted = "true";
+    //     rightEffect.muted = "true";
+    //     jumpEffect.muted = "true";
+    // }
+    // if (muteButton.innerText === "Sound Off") {
+    //     console.log("mute on");
+    //     wrongEffect.muted = "false";
+    //     rightEffect.muted = "false";
+    //     jumpEffect.muted = "false";
+    // }
 });
 
 /*

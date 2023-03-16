@@ -77,6 +77,8 @@ class Game {
 
         this.lose = false;
         this.win = false;
+
+        this.mute = true;
     }
 
     // createPlatforms() {
@@ -135,17 +137,19 @@ class Game {
                 if (this.tasklist.isNextItem(obj)) {
                     // collsion = true;
                     // this.found.push(this.items.splice(i, 1));
-                    const rightEffect = document.getElementById("rightEffect");
-                    rightEffect.play();
+                        const rightEffect = document.getElementById("rightEffect");
+                        rightEffect.play();
+
                     this.found.push(this.items.shift());
                     this.score += 100;
                     // console.log(this.tasklist.found); // could draw a line throught the ones already found
                 } else {
                     if (!obj.collision) { // if it isn't already colliding
                         this.lives.pop();
-                        // this.player.pos[0] - 5;
-                        const wrongEffect = document.getElementById("wrongEffect");
-                        wrongEffect.play();
+                        // this.player.pos[0] - 5;       
+                            const wrongEffect = document.getElementById("wrongEffect");
+                            wrongEffect.play();
+
                         obj.collision = true;
                         setTimeout(() => {
                             // console.log("testing timeout");
@@ -243,6 +247,8 @@ class Game {
     // collisionType(pos1, pos2) {
     //     if (pos1[0] > pos2[0] ) return ""
     // }
+
+    
 }
 
 export default Game;
