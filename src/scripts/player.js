@@ -108,7 +108,18 @@ class Player {
             this.frameSpeed = 30;
             this.maxFrames = 3;
             this.row = 19;
-        } else if (this.yVelocity < 0) {
+            // if (this.right) {
+                
+            //     this.frameSpeed = 10;
+            //     this.xVelocity = 3;
+            //     this.row = 5;
+            //     this.maxFrames = 7;
+            // } else if (this.left) {
+            //     this.xVelocity = -3;
+            //     this.frameSpeed = 10;
+            // }
+        } else 
+        if (this.yVelocity < 0) {
             this.frameSpeed = 30;
             this.maxFrames = 7;
             this.row = 47;
@@ -120,7 +131,7 @@ class Player {
         //     this.maxFrames = 7;
         //     this.row = 48;
         // }
-        else if (this.right) {
+        if (this.right) {
             this.frameSpeed = 10;
             this.xVelocity = 3;
             this.row = 5;
@@ -136,6 +147,12 @@ class Player {
             this.maxFrames = 7;
             this.xVelocity = 0;
         }
+
+        // if (this.up) {
+        //     this.frameSpeed = 30;
+        //     this.maxFrames = 3;
+        //     this.row = 19;
+        // }
 
         this.xVelocity *= this.friction;
         // console.log(this.pos[0]);
