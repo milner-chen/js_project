@@ -17,7 +17,7 @@ class Player {
         this.right = false;
 
         this.xdim = 32;
-        this.ydim = 32;
+        this.ydim = 30;
         this.scale = 3;
         this.width = this.xdim * this.scale;
         this.height = this.ydim * this.scale;
